@@ -292,7 +292,7 @@
     </script>
 
     <!-- Alpine.js & Application State Module -->
-    <script src="/appData.js"></script>
+    <script src="/src/appData.js"></script>
     <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
 
     <style>
@@ -1129,70 +1129,6 @@
                         </template>
                     </div>
                 </div>
-            </div>
-
-            <!-- Bottom CTA -->
-            <div class="bg-gradient-to-r from-slate-800 via-slate-800/90 to-slate-800 p-6 sm:p-8 rounded-3xl border border-slate-700/80 shadow-2xl flex flex-col sm:flex-row items-center justify-between gap-4 sm:gap-6 text-center sm:text-left">
-                <div>
-                    <h3 class="text-lg sm:text-xl font-extrabold text-white mb-1">
-                        160평 최첨단 스튜디오 대관 및 제작 상담
-                    </h3>
-                    <p class="text-xs sm:text-sm text-slate-300 font-normal break-keep">
-                        전자칠판, 4K 카메라, 크로마키, 부조정실을 갖춘 후미디어 스튜디오에서 최상의 콘텐츠를 연출해보세요.
-                    </p>
-                </div>
-                <a href="#contact" class="inline-flex items-center gap-2 bg-blue-600 hover:bg-blue-500 text-white font-extrabold text-xs sm:text-sm px-7 py-3.5 rounded-full transition-all duration-300 shadow-lg hover:shadow-xl shrink-0 active:scale-95 cursor-pointer">
-                    <span>스튜디오 대관/제작 문의</span>
-                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
-                </a>
-            </div>
-        </div>ter gap-1.5 bg-slate-950/60 backdrop-blur-xs px-3 py-1.5 rounded-full border border-slate-800/60">
-                        <template x-for="(item, idx) in studioInfrastructure" :key="item.id">
-                            <button @click="selectStudioSlide(idx)"
-                                    :aria-label="'슬라이드 ' + (idx + 1) + '번 이동'"
-                                    class="h-2 rounded-full transition-all duration-300 cursor-pointer"
-                                    :class="activeStudioIndex === idx ? 'w-6 bg-brand-mint shadow-xs shadow-brand-mint/50' : 'w-2 bg-slate-700 hover:bg-slate-500'"></button>
-                        </template>
-                    </div>
-                </div>
-
-                <!-- Interactive Horizontal Thumbnail Strip Gallery -->
-                <div class="mt-4 sm:mt-6">
-                    <div class="flex items-center justify-between mb-3 px-1">
-                        <div class="flex items-center gap-2">
-                            <span class="w-2 h-2 rounded-full bg-brand-mint"></span>
-                            <span class="text-xs sm:text-sm font-extrabold text-white tracking-wide">스튜디오 갤러리 썸네일</span>
-                        </div>
-                    </div>
-
-                    <div id="studio-thumbs-container" class="flex gap-3 overflow-x-auto pb-3 pt-1 scroll-smooth no-scrollbar">
-                        <template x-for="(item, idx) in studioInfrastructure" :key="item.id">
-                            <div :id="'studio-thumb-' + idx"
-                                 @click="selectStudioSlide(idx)"
-                                 class="w-36 sm:w-48 shrink-0 rounded-2xl overflow-hidden cursor-pointer border-2 transition-all duration-300 relative group aspect-[16/10] bg-slate-950 shadow-md"
-                                 :class="activeStudioIndex === idx ? 'border-brand-mint ring-2 ring-brand-mint/40 scale-102 z-10' : 'border-slate-800 opacity-60 hover:opacity-100 hover:border-slate-600'">
-                                
-                                <img :src="item.thumbUrl || item.imageUrl" 
-                                     :alt="item.title"
-                                     referrerpolicy="no-referrer"
-                                     class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
-                                
-                                <div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/40 to-transparent"></div>
-                                
-                                <div class="absolute bottom-2 left-2.5 right-2.5 flex flex-col">
-                                    <span class="text-[9px] font-extrabold text-brand-mint uppercase tracking-wider block" x-text="item.tag"></span>
-                                    <h4 class="text-[11px] sm:text-xs font-bold text-white truncate" x-text="item.title"></h4>
-                                </div>
-
-                                <div x-show="activeStudioIndex === idx" 
-                                     class="absolute top-2 right-2 w-4 h-4 rounded-full bg-brand-mint text-slate-950 flex items-center justify-center font-bold text-[9px] shadow-sm">
-                                    ✓
-                                </div>
-                            </div>
-                        </template>
-                    </div>
-                </div>
-
             </div>
 
             <!-- Bottom CTA -->
