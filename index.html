@@ -676,12 +676,21 @@
             0% { transform: translateX(0); }
             100% { transform: translateX(-50%); }
         }
+        @keyframes scrollReverse {
+            0% { transform: translateX(-50%); }
+            100% { transform: translateX(0); }
+        }
         .animate-marquee {
             display: flex;
-            width: 200%;
-            animation: scroll 14s linear infinite;
+            width: max-content;
+            animation: scroll 22s linear infinite;
         }
-        .animate-marquee:hover {
+        .animate-marquee-reverse {
+            display: flex;
+            width: max-content;
+            animation: scrollReverse 22s linear infinite;
+        }
+        .animate-marquee:hover, .animate-marquee-reverse:hover {
             animation-play-state: paused;
         }
 
@@ -839,11 +848,11 @@
                         교육의 미래를 완성하다
                     </span>
                     <span class="block text-white text-xl sm:text-3xl lg:text-4xl font-extrabold mt-1">
-                        이러닝 콘텐츠 기획·개발 · 영상 제작 · 오프라인 교육
+                        이러닝 콘텐츠 개발 · 영상 제작 · 오프라인 교육
                     </span>
                 </h1>
                 <p class="text-slate-200 text-xs sm:text-base lg:text-lg font-medium leading-relaxed max-w-2xl pt-1 break-keep drop-shadow-lg md:[text-shadow:_0_2px_12px_rgba(0,0,0,0.95)]">
-                    체계적인 교수설계(ID) 기반의 맞춤형 이러닝 콘텐츠 개발부터 전문 영상 제작, 오프라인 교육까지 대한민국 프리미엄 교육의 기준을 만들어갑니다.
+                    체계적인 교수설계 기반의 맞춤형 이러닝 콘텐츠 개발부터 전문 영상 제작, 오프라인 교육까지 대한민국 프리미엄 교육의 기준을 만들어갑니다.
                 </p>
             </div>
         </div>
@@ -970,7 +979,7 @@
                         </span>
                         <div class="absolute bottom-3 left-3 right-3">
                             <span class="text-white font-black text-lg sm:text-xl drop-shadow block">이러닝 콘텐츠 개발</span>
-                            <span class="text-teal-300 text-xs font-bold block mt-0.5">교수설계(ID) 기반 맞춤 솔루션</span>
+                            <span class="text-teal-300 text-xs font-bold block mt-0.5">교수설계 기반 맞춤 솔루션</span>
                         </div>
                     </div>
                     <div class="md:col-span-7 flex flex-col justify-between space-y-3 sm:space-y-4">
@@ -979,16 +988,16 @@
                                 공공 · 기업 · 대학 전문 특화 개발
                             </span>
                             <h3 class="text-xl sm:text-2xl lg:text-3xl font-black text-white leading-tight break-keep mb-2">
-                                교수설계 기반 맞춤형 이러닝 콘텐츠 기획·개발
+                                교수설계 기반 맞춤형 이러닝 콘텐츠 개발
                             </h3>
                             <p class="text-xs sm:text-sm text-slate-300 leading-relaxed font-normal break-keep mb-3">
-                                체계적인 교수설계(ID)와 맞춤 기획으로 공공기관, 기업, 대학의 다양하고 까다로운 요구사항에 최적화된 고품질 이러닝 콘텐츠를 개발합니다.
+                                체계적인 교수설계와 맞춤 기획으로 공공기관, 기업, 대학의 다양하고 까다로운 요구사항에 최적화된 고품질 이러닝 콘텐츠를 개발합니다.
                             </p>
                         </div>
                         <ul class="space-y-2 bg-slate-800/80 p-3.5 sm:p-4 rounded-xl border border-slate-700/70 text-xs sm:text-sm font-semibold text-slate-200">
                             <li class="flex items-center gap-2">
                                 <span class="w-2 h-2 rounded-full bg-teal-400"></span>
-                                <span class="text-teal-300 font-bold">교수설계(ID) 전담팀의 맞춤형 기획력</span>
+                                <span class="text-teal-300 font-bold">교수설계 전담팀의 맞춤형 기획력</span>
                             </li>
                             <li class="flex items-center gap-2">
                                 <span class="w-2 h-2 rounded-full bg-teal-400"></span>
