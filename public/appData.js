@@ -14,7 +14,7 @@ const PORTFOLIO_DATA = [
     { id: 'paYW3d0MRqk', title: 'EBS 올쏘 핵심강좌 오프닝 모션그래픽', cat: 'production', tag: 'EBS', label: '모션그래픽' },
     { id: 'komXGh3TGSo', title: 'EBS 천일문 메인 타이틀 연출', cat: 'production', tag: 'EBS', label: '타이틀 연출' },
     { id: 'cF7i6m9apsE', title: 'EBS 포텐시리즈 4K 모션 오프닝', cat: 'production', tag: 'EBS', label: '모션그래픽' },
-    { id: '-Is7q7qD9Rc', title: '한국AI교육신문 & 뉴미디어 PR 브랜딩', cat: 'press', tag: '유튜브PR', label: '디지털 언론 PR' }
+    { id: '-Is7q7qD9Rc', title: '한국AI교육신문 & 뉴미디어 언론 브랜딩', cat: 'press', tag: '유튜브홍보', label: '디지털 언론 홍보' }
 ];
 
 const STUDIO_IMAGES = [
@@ -32,7 +32,7 @@ const ORGANIZATION_DATA = [
     { id: 'div-1', code: 'DIVISION 01', name: '교육사업부', desc: '교육과정 맞춤 설계 및 사업 운영 총괄' },
     { id: 'div-2', code: 'DIVISION 02', name: '에듀테크부', desc: 'AI 교육 콘텐츠 및 UI/UX 디자인 개발' },
     { id: 'div-3', code: 'DIVISION 03', name: '영상미디어부', desc: '고품질 교육 영상 촬영, 편집 및 연출' },
-    { id: 'div-4', code: 'DIVISION 04', name: '경영지원부', desc: '언론 홍보, PR 및 경영 행정 관리' }
+    { id: 'div-4', code: 'DIVISION 04', name: '경영지원부', desc: '언론 홍보 및 경영 행정 관리' }
 ];
 
 document.addEventListener('alpine:init', () => {
@@ -47,7 +47,7 @@ document.addEventListener('alpine:init', () => {
         imageModalOpen: false,
         activeStudioImg: '',
         activeStudioTitle: '',
-        keywords: ['교수설계 기반 맞춤형 이러닝 콘텐츠 개발 (공공·기업·대학 전문)', '4K 고화질 미디어 프로덕션 & 크리에이티브', '에듀테크 기반 최신 디지털 학습 시스템', '4K 가상 크로마키 & 전자칠판 스튜디오', '오프라인 전문 교육 & 브랜드 PR 통합 솔루션'],
+        keywords: ['교수설계 기반 맞춤형 이러닝 콘텐츠 개발 (공공·기업·대학 전문)', '4K 고화질 미디어 프로덕션 & 크리에이티브', '에듀테크 기반 최신 디지털 학습 시스템', '4K 가상 크로마키 & 전자칠판 스튜디오', '오프라인 전문 교육 & 브랜드 홍보 전문 서비스'],
         currentKeywordIndex: 0,
 
         // [전체 포트폴리오 목록 - PORTFOLIO_DATA 상수로 100% 보장]
