@@ -1003,12 +1003,6 @@
                                 <span>AI 에듀테크 통합 &amp; 멀티 디바이스 반응형 구축</span>
                             </li>
                         </ul>
-                        <div class="pt-1 flex items-center gap-3">
-                            <a href="#contact" class="inline-flex items-center gap-2 px-5 py-2.5 bg-teal-500 hover:bg-teal-400 text-slate-950 font-black text-xs sm:text-sm rounded-xl transition-all shadow-lg active:scale-95">
-                                <span>이러닝 제작 문의하기</span>
-                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
-                            </a>
-                        </div>
                     </div>
                 </div>
 
@@ -1065,12 +1059,6 @@
                                 <span>SNS 바이럴 마케팅 &amp; 유튜브 브랜딩 원스톱 솔루션</span>
                             </li>
                         </ul>
-                        <div class="pt-1 flex items-center gap-3">
-                            <a href="#contact" class="inline-flex items-center gap-2 px-5 py-2.5 bg-cyan-500 hover:bg-cyan-400 text-slate-950 font-black text-xs sm:text-sm rounded-xl transition-all shadow-lg active:scale-95">
-                                <span>영상/마케팅 문의하기</span>
-                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
-                            </a>
-                        </div>
                     </div>
                 </div>
 
@@ -1127,12 +1115,6 @@
                                 <span>후캠퍼스 평생교육원 인프라 연계 커뮤니티</span>
                             </li>
                         </ul>
-                        <div class="pt-1 flex items-center gap-3">
-                            <a href="#contact" class="inline-flex items-center gap-2 px-5 py-2.5 bg-amber-500 hover:bg-amber-400 text-slate-950 font-black text-xs sm:text-sm rounded-xl transition-all shadow-lg active:scale-95">
-                                <span>교육 과정 문의하기</span>
-                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
-                            </a>
-                        </div>
                     </div>
                 </div>
 
@@ -1147,69 +1129,6 @@
                         <svg x-show="serviceAutoTimer" class="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 24 24"><path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/></svg>
                         <svg x-show="!serviceAutoTimer" class="w-3.5 h-3.5 text-teal-400" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
                     </button>
-                </div>
-            </div>
-
-            <!-- Interactive 3 Cards Selector Grid Below -->
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-4 sm:gap-6 max-w-5xl mx-auto">
-                <!-- Selector Card 0 -->
-                <div @click="selectServiceCard(0); restartServiceAutoPlay(8000);"
-                     :class="activeServiceIndex === 0 ? 'border-teal-500 ring-2 ring-teal-500/50 shadow-xl bg-teal-50/30 scale-[1.01]' : 'border-slate-200 bg-white opacity-80 hover:opacity-100 hover:border-slate-300 shadow-xs'"
-                     class="p-4 sm:p-5 rounded-2xl border transition-all duration-300 cursor-pointer flex flex-col justify-between group">
-                    <div>
-                        <div class="flex items-center justify-between mb-2">
-                            <span class="px-2.5 py-0.5 rounded-md bg-teal-500/10 text-teal-700 text-[11px] font-black uppercase tracking-wider border border-teal-500/20">
-                                01. E-LEARNING
-                            </span>
-                            <span class="w-2.5 h-2.5 rounded-full" :class="activeServiceIndex === 0 ? 'bg-teal-500 animate-ping' : 'bg-slate-300'"></span>
-                        </div>
-                        <h4 class="font-bold text-slate-900 text-base mb-1.5 group-hover:text-teal-700 transition-colors">
-                            이러닝 콘텐츠 개발
-                        </h4>
-                        <p class="text-xs text-slate-600 leading-relaxed break-keep font-medium">
-                            교수설계 기반 맞춤형 이러닝 콘텐츠 기획 및 개발 (공공·기업·대학)
-                        </p>
-                    </div>
-                </div>
-
-                <!-- Selector Card 1 -->
-                <div @click="selectServiceCard(1); restartServiceAutoPlay(8000);"
-                     :class="activeServiceIndex === 1 ? 'border-cyan-500 ring-2 ring-cyan-500/50 shadow-xl bg-cyan-50/30 scale-[1.01]' : 'border-slate-200 bg-white opacity-80 hover:opacity-100 hover:border-slate-300 shadow-xs'"
-                     class="p-4 sm:p-5 rounded-2xl border transition-all duration-300 cursor-pointer flex flex-col justify-between group">
-                    <div>
-                        <div class="flex items-center justify-between mb-2">
-                            <span class="px-2.5 py-0.5 rounded-md bg-cyan-500/10 text-cyan-700 text-[11px] font-black uppercase tracking-wider border border-cyan-500/20">
-                                02. MEDIA &amp; MARKETING
-                            </span>
-                            <span class="w-2.5 h-2.5 rounded-full" :class="activeServiceIndex === 1 ? 'bg-cyan-500 animate-ping' : 'bg-slate-300'"></span>
-                        </div>
-                        <h4 class="font-bold text-slate-900 text-base mb-1.5 group-hover:text-cyan-700 transition-colors">
-                            영상 제작 &amp; 홍보 마케팅
-                        </h4>
-                        <p class="text-xs text-slate-600 leading-relaxed break-keep font-medium">
-                            160평 4K 스튜디오 영상 프로덕션 &amp; 언론 PR 마케팅 솔루션
-                        </p>
-                    </div>
-                </div>
-
-                <!-- Selector Card 2 -->
-                <div @click="selectServiceCard(2); restartServiceAutoPlay(8000);"
-                     :class="activeServiceIndex === 2 ? 'border-amber-500 ring-2 ring-amber-500/50 shadow-xl bg-amber-50/30 scale-[1.01]' : 'border-slate-200 bg-white opacity-80 hover:opacity-100 hover:border-slate-300 shadow-xs'"
-                     class="p-4 sm:p-5 rounded-2xl border transition-all duration-300 cursor-pointer flex flex-col justify-between group">
-                    <div>
-                        <div class="flex items-center justify-between mb-2">
-                            <span class="px-2.5 py-0.5 rounded-md bg-amber-500/10 text-amber-700 text-[11px] font-black uppercase tracking-wider border border-amber-500/20">
-                                03. OFFLINE ACADEMY
-                            </span>
-                            <span class="w-2.5 h-2.5 rounded-full" :class="activeServiceIndex === 2 ? 'bg-amber-500 animate-ping' : 'bg-slate-300'"></span>
-                        </div>
-                        <h4 class="font-bold text-slate-900 text-base mb-1.5 group-hover:text-amber-700 transition-colors">
-                            오프라인 아카데미 교육
-                        </h4>
-                        <p class="text-xs text-slate-600 leading-relaxed break-keep font-medium">
-                            최상위 전문가 직강 실전 특강 &amp; 4K 스튜디오 현장 실습 워크숍
-                        </p>
-                    </div>
                 </div>
             </div>
         </div>
@@ -1227,7 +1146,7 @@
                     Brand Story &amp; Philosophy
                 </span>
                 <h2 class="text-2xl sm:text-3xl lg:text-4xl font-black text-white tracking-tight leading-tight mb-3 break-keep">
-                    스마트한 교육과 미디어를 완성하는 전문가 그룹, 후미디어
+                    스마트한 교육과 미디어를 완성하는 <span class="text-brand-mint font-black drop-shadow-[0_0_12px_rgba(0,210,132,0.6)]">후미디어</span>
                 </h2>
                 <p class="text-xs sm:text-base font-medium text-blue-200/90 break-keep max-w-2xl mx-auto bg-slate-800/80 rounded-xl py-2 px-4 border border-slate-700/60 shadow-inner">
                     "우리는 단순한 콘텐츠를 만들지 않습니다. 교육과 미디어의 본질을 꿰뚫고, 세상에 울림을 주는 가치를 창조합니다."
@@ -1609,20 +1528,14 @@
                 </div>
             </div>
 
-            <!-- Bottom CTA -->
-            <div class="bg-gradient-to-r from-slate-800 via-slate-800/90 to-slate-800 p-6 sm:p-8 rounded-3xl border border-slate-700/80 shadow-2xl flex flex-col sm:flex-row items-center justify-between gap-4 sm:gap-6 text-center sm:text-left">
-                <div>
-                    <h3 class="text-lg sm:text-xl font-extrabold text-white mb-1">
-                        160평 최첨단 스튜디오 대관 및 제작 상담
-                    </h3>
-                    <p class="text-xs sm:text-sm text-slate-300 font-normal break-keep">
-                        전자칠판, 4K 카메라, 크로마키, 부조정실을 갖춘 후미디어 스튜디오에서 최상의 콘텐츠를 연출해보세요.
-                    </p>
-                </div>
-                <a href="#contact" class="inline-flex items-center gap-2 bg-blue-600 hover:bg-blue-500 text-white font-extrabold text-xs sm:text-sm px-7 py-3.5 rounded-full transition-all duration-300 shadow-lg hover:shadow-xl shrink-0 active:scale-95 cursor-pointer">
-                    <span>스튜디오 대관/제작 문의</span>
-                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
-                </a>
+            <!-- Bottom Info Card -->
+            <div class="bg-gradient-to-r from-slate-800 via-slate-800/90 to-slate-800 p-6 sm:p-8 rounded-3xl border border-slate-700/80 shadow-2xl text-center">
+                <h3 class="text-lg sm:text-2xl font-extrabold text-white mb-2">
+                    160평 최첨단 스튜디오 대관 및 인프라
+                </h3>
+                <p class="text-xs sm:text-base text-slate-300 font-normal break-keep max-w-2xl mx-auto">
+                    전자칠판, 4K 카메라, 크로마키, 부조정실을 갖춘 후미디어 스튜디오에서 최상의 콘텐츠를 연출해보세요.
+                </p>
             </div>
         </div>
     </section>
@@ -1634,7 +1547,7 @@
                 <span class="inline-block px-3 py-1 rounded-md bg-brand-mint-light text-brand-mint-hover text-xs font-semibold mb-2 sm:mb-3">
                     PORTFOLIO
                 </span>
-                <h2 class="text-2xl sm:text-4xl font-extrabold text-brand-text mb-2">콘텐츠 개발 &amp; 통합 미디어 포트폴리오</h2>
+                <h2 class="text-2xl sm:text-4xl font-extrabold text-brand-text mb-2">콘텐츠 개발 &amp; 영상 포트폴리오</h2>
                 <p class="text-gray-500 text-xs sm:text-sm">교육 컨설팅부터 4K 미디어 프로덕션, 후캠퍼스 평생교육, 디지털 언론 PR까지 분야별 주요 수행 사례입니다.</p>
             </div>
 
@@ -1679,249 +1592,159 @@
     </section>
 
     <!-- PARTNERS & CLIENTS -->
-    <section class="py-6 sm:py-12 bg-[#f8fafc] border-t border-b border-gray-200/80 overflow-hidden">
+    <section class="py-8 sm:py-12 bg-[#f8fafc] border-t border-b border-gray-200/80 overflow-hidden">
         <div class="max-w-[1200px] mx-auto px-4 mb-4 sm:mb-6 text-center">
             <span class="text-xs font-bold text-gray-400 tracking-wider uppercase">CLIENTS &amp; PARTNERS</span>
             <h3 class="text-lg sm:text-2xl font-extrabold text-slate-900 mt-1">함께하는 주요 파트너사</h3>
         </div>
 
-        <div class="relative w-full overflow-hidden py-2">
-            <div class="animate-marquee flex items-center gap-3 sm:gap-4 whitespace-nowrap">
-                <div class="h-12 sm:h-14 shrink-0 bg-white border border-slate-200 rounded-xl px-5 sm:px-6 flex items-center justify-center shadow-2xs hover:shadow-sm hover:border-blue-400 transition-all">
-                    <span class="text-sm sm:text-base font-extrabold text-slate-800 tracking-tight">EBS 중학프리미엄</span>
-                </div>
-                <div class="h-12 sm:h-14 shrink-0 bg-white border border-slate-200 rounded-xl px-5 sm:px-6 flex items-center justify-center shadow-2xs hover:shadow-sm hover:border-blue-400 transition-all">
-                    <span class="text-sm sm:text-base font-extrabold text-slate-800 tracking-tight">웅진씽크빅</span>
-                </div>
-                <div class="h-12 sm:h-14 shrink-0 bg-white border border-slate-200 rounded-xl px-5 sm:px-6 flex items-center justify-center shadow-2xs hover:shadow-sm hover:border-blue-400 transition-all">
-                    <span class="text-sm sm:text-base font-extrabold text-slate-800 tracking-tight">동아출판</span>
-                </div>
-                <div class="h-12 sm:h-14 shrink-0 bg-white border border-slate-200 rounded-xl px-5 sm:px-6 flex items-center justify-center shadow-2xs hover:shadow-sm hover:border-blue-400 transition-all">
-                    <span class="text-sm sm:text-base font-extrabold text-slate-800 tracking-tight">좋은책 신사고</span>
-                </div>
-                <div class="h-12 sm:h-14 shrink-0 bg-white border border-slate-200 rounded-xl px-5 sm:px-6 flex items-center justify-center shadow-2xs hover:shadow-sm hover:border-blue-400 transition-all">
-                    <span class="text-sm sm:text-base font-extrabold text-slate-800 tracking-tight">미래엔</span>
-                </div>
-                <div class="h-12 sm:h-14 shrink-0 bg-white border border-slate-200 rounded-xl px-5 sm:px-6 flex items-center justify-center shadow-2xs hover:shadow-sm hover:border-blue-400 transition-all">
-                    <span class="text-sm sm:text-base font-extrabold text-slate-800 tracking-tight">멀티캠퍼스</span>
-                </div>
-                <div class="h-12 sm:h-14 shrink-0 bg-white border border-slate-200 rounded-xl px-5 sm:px-6 flex items-center justify-center shadow-2xs hover:shadow-sm hover:border-blue-400 transition-all">
-                    <span class="text-sm sm:text-base font-extrabold text-slate-800 tracking-tight">아이스크림 홈런</span>
-                </div>
-                <div class="h-12 sm:h-14 shrink-0 bg-white border border-slate-200 rounded-xl px-5 sm:px-6 flex items-center justify-center shadow-2xs hover:shadow-sm hover:border-blue-400 transition-all">
-                    <span class="text-sm sm:text-base font-extrabold text-slate-800 tracking-tight">세종사이버대학교</span>
-                </div>
-                <div class="h-12 sm:h-14 shrink-0 bg-white border border-slate-200 rounded-xl px-5 sm:px-6 flex items-center justify-center shadow-2xs hover:shadow-sm hover:border-blue-400 transition-all">
-                    <span class="text-sm sm:text-base font-extrabold text-slate-800 tracking-tight">한국방송통신대학교</span>
-                </div>
-                <div class="h-12 sm:h-14 shrink-0 bg-white border border-slate-200 rounded-xl px-5 sm:px-6 flex items-center justify-center shadow-2xs hover:shadow-sm hover:border-blue-400 transition-all">
-                    <span class="text-sm sm:text-base font-extrabold text-slate-800 tracking-tight">삼육대학교</span>
-                </div>
-                <div class="h-12 sm:h-14 shrink-0 bg-white border border-slate-200 rounded-xl px-5 sm:px-6 flex items-center justify-center shadow-2xs hover:shadow-sm hover:border-blue-400 transition-all">
-                    <span class="text-sm sm:text-base font-extrabold text-slate-800 tracking-tight">한국관세사회</span>
-                </div>
-                <div class="h-12 sm:h-14 shrink-0 bg-white border border-slate-200 rounded-xl px-5 sm:px-6 flex items-center justify-center shadow-2xs hover:shadow-sm hover:border-blue-400 transition-all">
-                    <span class="text-sm sm:text-base font-extrabold text-slate-800 tracking-tight">한겨레교육</span>
-                </div>
-                <div class="h-12 sm:h-14 shrink-0 bg-white border border-slate-200 rounded-xl px-5 sm:px-6 flex items-center justify-center shadow-2xs hover:shadow-sm hover:border-blue-400 transition-all">
-                    <span class="text-sm sm:text-base font-extrabold text-slate-800 tracking-tight">한국생산성본부 (KPC)</span>
-                </div>
-                <div class="h-12 sm:h-14 shrink-0 bg-white border border-slate-200 rounded-xl px-5 sm:px-6 flex items-center justify-center shadow-2xs hover:shadow-sm hover:border-blue-400 transition-all">
-                    <span class="text-sm sm:text-base font-extrabold text-slate-800 tracking-tight">한국가스기술공사</span>
-                </div>
-                <div class="h-12 sm:h-14 shrink-0 bg-white border border-slate-200 rounded-xl px-5 sm:px-6 flex items-center justify-center shadow-2xs hover:shadow-sm hover:border-blue-400 transition-all">
-                    <span class="text-sm sm:text-base font-extrabold text-slate-800 tracking-tight">질병관리청</span>
-                </div>
-                <div class="h-12 sm:h-14 shrink-0 bg-white border border-slate-200 rounded-xl px-5 sm:px-6 flex items-center justify-center shadow-2xs hover:shadow-sm hover:border-blue-400 transition-all">
-                    <span class="text-sm sm:text-base font-extrabold text-slate-800 tracking-tight">NE능률</span>
-                </div>
+        <div class="space-y-3 sm:space-y-4">
+            <!-- Row 1: Forward Sliding Marquee -->
+            <div class="relative w-full overflow-hidden py-1">
+                <div class="animate-marquee flex items-center gap-3 sm:gap-4 whitespace-nowrap">
+                    <div class="h-11 sm:h-13 shrink-0 bg-white border border-slate-200 rounded-xl px-5 flex items-center justify-center shadow-xs hover:border-blue-400 transition-all"><span class="text-xs sm:text-sm font-extrabold text-slate-800">EBS 중학프리미엄</span></div>
+                    <div class="h-11 sm:h-13 shrink-0 bg-white border border-slate-200 rounded-xl px-5 flex items-center justify-center shadow-xs hover:border-blue-400 transition-all"><span class="text-xs sm:text-sm font-extrabold text-slate-800">웅진씽크빅</span></div>
+                    <div class="h-11 sm:h-13 shrink-0 bg-white border border-slate-200 rounded-xl px-5 flex items-center justify-center shadow-xs hover:border-blue-400 transition-all"><span class="text-xs sm:text-sm font-extrabold text-slate-800">동아출판</span></div>
+                    <div class="h-11 sm:h-13 shrink-0 bg-white border border-slate-200 rounded-xl px-5 flex items-center justify-center shadow-xs hover:border-blue-400 transition-all"><span class="text-xs sm:text-sm font-extrabold text-slate-800">좋은책 신사고</span></div>
+                    <div class="h-11 sm:h-13 shrink-0 bg-white border border-slate-200 rounded-xl px-5 flex items-center justify-center shadow-xs hover:border-blue-400 transition-all"><span class="text-xs sm:text-sm font-extrabold text-slate-800">미래엔</span></div>
+                    <div class="h-11 sm:h-13 shrink-0 bg-white border border-slate-200 rounded-xl px-5 flex items-center justify-center shadow-xs hover:border-blue-400 transition-all"><span class="text-xs sm:text-sm font-extrabold text-slate-800">멀티캠퍼스</span></div>
+                    <div class="h-11 sm:h-13 shrink-0 bg-white border border-slate-200 rounded-xl px-5 flex items-center justify-center shadow-xs hover:border-blue-400 transition-all"><span class="text-xs sm:text-sm font-extrabold text-slate-800">아이스크림 홈런</span></div>
+                    <div class="h-11 sm:h-13 shrink-0 bg-white border border-slate-200 rounded-xl px-5 flex items-center justify-center shadow-xs hover:border-blue-400 transition-all"><span class="text-xs sm:text-sm font-extrabold text-slate-800">세종사이버대학교</span></div>
 
-                <!-- LOOP REPEAT -->
-                <div class="h-12 sm:h-14 shrink-0 bg-white border border-slate-200 rounded-xl px-5 sm:px-6 flex items-center justify-center shadow-2xs hover:shadow-sm hover:border-blue-400 transition-all">
-                    <span class="text-sm sm:text-base font-extrabold text-slate-800 tracking-tight">EBS 중학프리미엄</span>
+                    <!-- Repeat Row 1 -->
+                    <div class="h-11 sm:h-13 shrink-0 bg-white border border-slate-200 rounded-xl px-5 flex items-center justify-center shadow-xs hover:border-blue-400 transition-all"><span class="text-xs sm:text-sm font-extrabold text-slate-800">EBS 중학프리미엄</span></div>
+                    <div class="h-11 sm:h-13 shrink-0 bg-white border border-slate-200 rounded-xl px-5 flex items-center justify-center shadow-xs hover:border-blue-400 transition-all"><span class="text-xs sm:text-sm font-extrabold text-slate-800">웅진씽크빅</span></div>
+                    <div class="h-11 sm:h-13 shrink-0 bg-white border border-slate-200 rounded-xl px-5 flex items-center justify-center shadow-xs hover:border-blue-400 transition-all"><span class="text-xs sm:text-sm font-extrabold text-slate-800">동아출판</span></div>
+                    <div class="h-11 sm:h-13 shrink-0 bg-white border border-slate-200 rounded-xl px-5 flex items-center justify-center shadow-xs hover:border-blue-400 transition-all"><span class="text-xs sm:text-sm font-extrabold text-slate-800">좋은책 신사고</span></div>
+                    <div class="h-11 sm:h-13 shrink-0 bg-white border border-slate-200 rounded-xl px-5 flex items-center justify-center shadow-xs hover:border-blue-400 transition-all"><span class="text-xs sm:text-sm font-extrabold text-slate-800">미래엔</span></div>
+                    <div class="h-11 sm:h-13 shrink-0 bg-white border border-slate-200 rounded-xl px-5 flex items-center justify-center shadow-xs hover:border-blue-400 transition-all"><span class="text-xs sm:text-sm font-extrabold text-slate-800">멀티캠퍼스</span></div>
+                    <div class="h-11 sm:h-13 shrink-0 bg-white border border-slate-200 rounded-xl px-5 flex items-center justify-center shadow-xs hover:border-blue-400 transition-all"><span class="text-xs sm:text-sm font-extrabold text-slate-800">아이스크림 홈런</span></div>
+                    <div class="h-11 sm:h-13 shrink-0 bg-white border border-slate-200 rounded-xl px-5 flex items-center justify-center shadow-xs hover:border-blue-400 transition-all"><span class="text-xs sm:text-sm font-extrabold text-slate-800">세종사이버대학교</span></div>
                 </div>
-                <div class="h-12 sm:h-14 shrink-0 bg-white border border-slate-200 rounded-xl px-5 sm:px-6 flex items-center justify-center shadow-2xs hover:shadow-sm hover:border-blue-400 transition-all">
-                    <span class="text-sm sm:text-base font-extrabold text-slate-800 tracking-tight">웅진씽크빅</span>
-                </div>
-                <div class="h-12 sm:h-14 shrink-0 bg-white border border-slate-200 rounded-xl px-5 sm:px-6 flex items-center justify-center shadow-2xs hover:shadow-sm hover:border-blue-400 transition-all">
-                    <span class="text-sm sm:text-base font-extrabold text-slate-800 tracking-tight">동아출판</span>
-                </div>
-                <div class="h-12 sm:h-14 shrink-0 bg-white border border-slate-200 rounded-xl px-5 sm:px-6 flex items-center justify-center shadow-2xs hover:shadow-sm hover:border-blue-400 transition-all">
-                    <span class="text-sm sm:text-base font-extrabold text-slate-800 tracking-tight">좋은책 신사고</span>
-                </div>
-                <div class="h-12 sm:h-14 shrink-0 bg-white border border-slate-200 rounded-xl px-5 sm:px-6 flex items-center justify-center shadow-2xs hover:shadow-sm hover:border-blue-400 transition-all">
-                    <span class="text-sm sm:text-base font-extrabold text-slate-800 tracking-tight">미래엔</span>
-                </div>
-                <div class="h-12 sm:h-14 shrink-0 bg-white border border-slate-200 rounded-xl px-5 sm:px-6 flex items-center justify-center shadow-2xs hover:shadow-sm hover:border-blue-400 transition-all">
-                    <span class="text-sm sm:text-base font-extrabold text-slate-800 tracking-tight">멀티캠퍼스</span>
-                </div>
-                <div class="h-12 sm:h-14 shrink-0 bg-white border border-slate-200 rounded-xl px-5 sm:px-6 flex items-center justify-center shadow-2xs hover:shadow-sm hover:border-blue-400 transition-all">
-                    <span class="text-sm sm:text-base font-extrabold text-slate-800 tracking-tight">아이스크림 홈런</span>
-                </div>
-                <div class="h-12 sm:h-14 shrink-0 bg-white border border-slate-200 rounded-xl px-5 sm:px-6 flex items-center justify-center shadow-2xs hover:shadow-sm hover:border-blue-400 transition-all">
-                    <span class="text-sm sm:text-base font-extrabold text-slate-800 tracking-tight">세종사이버대학교</span>
-                </div>
-                <div class="h-12 sm:h-14 shrink-0 bg-white border border-slate-200 rounded-xl px-5 sm:px-6 flex items-center justify-center shadow-2xs hover:shadow-sm hover:border-blue-400 transition-all">
-                    <span class="text-sm sm:text-base font-extrabold text-slate-800 tracking-tight">한국방송통신대학교</span>
-                </div>
-                <div class="h-12 sm:h-14 shrink-0 bg-white border border-slate-200 rounded-xl px-5 sm:px-6 flex items-center justify-center shadow-2xs hover:shadow-sm hover:border-blue-400 transition-all">
-                    <span class="text-sm sm:text-base font-extrabold text-slate-800 tracking-tight">삼육대학교</span>
-                </div>
-                <div class="h-12 sm:h-14 shrink-0 bg-white border border-slate-200 rounded-xl px-5 sm:px-6 flex items-center justify-center shadow-2xs hover:shadow-sm hover:border-blue-400 transition-all">
-                    <span class="text-sm sm:text-base font-extrabold text-slate-800 tracking-tight">한국관세사회</span>
-                </div>
-                <div class="h-12 sm:h-14 shrink-0 bg-white border border-slate-200 rounded-xl px-5 sm:px-6 flex items-center justify-center shadow-2xs hover:shadow-sm hover:border-blue-400 transition-all">
-                    <span class="text-sm sm:text-base font-extrabold text-slate-800 tracking-tight">한겨레교육</span>
-                </div>
-                <div class="h-12 sm:h-14 shrink-0 bg-white border border-slate-200 rounded-xl px-5 sm:px-6 flex items-center justify-center shadow-2xs hover:shadow-sm hover:border-blue-400 transition-all">
-                    <span class="text-sm sm:text-base font-extrabold text-slate-800 tracking-tight">한국생산성본부 (KPC)</span>
-                </div>
-                <div class="h-12 sm:h-14 shrink-0 bg-white border border-slate-200 rounded-xl px-5 sm:px-6 flex items-center justify-center shadow-2xs hover:shadow-sm hover:border-blue-400 transition-all">
-                    <span class="text-sm sm:text-base font-extrabold text-slate-800 tracking-tight">한국가스기술공사</span>
-                </div>
-                <div class="h-12 sm:h-14 shrink-0 bg-white border border-slate-200 rounded-xl px-5 sm:px-6 flex items-center justify-center shadow-2xs hover:shadow-sm hover:border-blue-400 transition-all">
-                    <span class="text-sm sm:text-base font-extrabold text-slate-800 tracking-tight">질병관리청</span>
-                </div>
-                <div class="h-12 sm:h-14 shrink-0 bg-white border border-slate-200 rounded-xl px-5 sm:px-6 flex items-center justify-center shadow-2xs hover:shadow-sm hover:border-blue-400 transition-all">
-                    <span class="text-sm sm:text-base font-extrabold text-slate-800 tracking-tight">NE능률</span>
+            </div>
+
+            <!-- Row 2: Reverse Sliding Marquee -->
+            <div class="relative w-full overflow-hidden py-1">
+                <div class="animate-marquee-reverse flex items-center gap-3 sm:gap-4 whitespace-nowrap">
+                    <div class="h-11 sm:h-13 shrink-0 bg-white border border-slate-200 rounded-xl px-5 flex items-center justify-center shadow-xs hover:border-blue-400 transition-all"><span class="text-xs sm:text-sm font-extrabold text-slate-800">한국방송통신대학교</span></div>
+                    <div class="h-11 sm:h-13 shrink-0 bg-white border border-slate-200 rounded-xl px-5 flex items-center justify-center shadow-xs hover:border-blue-400 transition-all"><span class="text-xs sm:text-sm font-extrabold text-slate-800">삼육대학교</span></div>
+                    <div class="h-11 sm:h-13 shrink-0 bg-white border border-slate-200 rounded-xl px-5 flex items-center justify-center shadow-xs hover:border-blue-400 transition-all"><span class="text-xs sm:text-sm font-extrabold text-slate-800">한국관세사회</span></div>
+                    <div class="h-11 sm:h-13 shrink-0 bg-white border border-slate-200 rounded-xl px-5 flex items-center justify-center shadow-xs hover:border-blue-400 transition-all"><span class="text-xs sm:text-sm font-extrabold text-slate-800">한겨레교육</span></div>
+                    <div class="h-11 sm:h-13 shrink-0 bg-white border border-slate-200 rounded-xl px-5 flex items-center justify-center shadow-xs hover:border-blue-400 transition-all"><span class="text-xs sm:text-sm font-extrabold text-slate-800">한국생산성본부 (KPC)</span></div>
+                    <div class="h-11 sm:h-13 shrink-0 bg-white border border-slate-200 rounded-xl px-5 flex items-center justify-center shadow-xs hover:border-blue-400 transition-all"><span class="text-xs sm:text-sm font-extrabold text-slate-800">한국가스기술공사</span></div>
+                    <div class="h-11 sm:h-13 shrink-0 bg-white border border-slate-200 rounded-xl px-5 flex items-center justify-center shadow-xs hover:border-blue-400 transition-all"><span class="text-xs sm:text-sm font-extrabold text-slate-800">질병관리청</span></div>
+                    <div class="h-11 sm:h-13 shrink-0 bg-white border border-slate-200 rounded-xl px-5 flex items-center justify-center shadow-xs hover:border-blue-400 transition-all"><span class="text-xs sm:text-sm font-extrabold text-slate-800">NE능률</span></div>
+
+                    <!-- Repeat Row 2 -->
+                    <div class="h-11 sm:h-13 shrink-0 bg-white border border-slate-200 rounded-xl px-5 flex items-center justify-center shadow-xs hover:border-blue-400 transition-all"><span class="text-xs sm:text-sm font-extrabold text-slate-800">한국방송통신대학교</span></div>
+                    <div class="h-11 sm:h-13 shrink-0 bg-white border border-slate-200 rounded-xl px-5 flex items-center justify-center shadow-xs hover:border-blue-400 transition-all"><span class="text-xs sm:text-sm font-extrabold text-slate-800">삼육대학교</span></div>
+                    <div class="h-11 sm:h-13 shrink-0 bg-white border border-slate-200 rounded-xl px-5 flex items-center justify-center shadow-xs hover:border-blue-400 transition-all"><span class="text-xs sm:text-sm font-extrabold text-slate-800">한국관세사회</span></div>
+                    <div class="h-11 sm:h-13 shrink-0 bg-white border border-slate-200 rounded-xl px-5 flex items-center justify-center shadow-xs hover:border-blue-400 transition-all"><span class="text-xs sm:text-sm font-extrabold text-slate-800">한겨레교육</span></div>
+                    <div class="h-11 sm:h-13 shrink-0 bg-white border border-slate-200 rounded-xl px-5 flex items-center justify-center shadow-xs hover:border-blue-400 transition-all"><span class="text-xs sm:text-sm font-extrabold text-slate-800">한국생산성본부 (KPC)</span></div>
+                    <div class="h-11 sm:h-13 shrink-0 bg-white border border-slate-200 rounded-xl px-5 flex items-center justify-center shadow-xs hover:border-blue-400 transition-all"><span class="text-xs sm:text-sm font-extrabold text-slate-800">한국가스기술공사</span></div>
+                    <div class="h-11 sm:h-13 shrink-0 bg-white border border-slate-200 rounded-xl px-5 flex items-center justify-center shadow-xs hover:border-blue-400 transition-all"><span class="text-xs sm:text-sm font-extrabold text-slate-800">질병관리청</span></div>
+                    <div class="h-11 sm:h-13 shrink-0 bg-white border border-slate-200 rounded-xl px-5 flex items-center justify-center shadow-xs hover:border-blue-400 transition-all"><span class="text-xs sm:text-sm font-extrabold text-slate-800">NE능률</span></div>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- CONTACT & FOOTER -->
-    <section id="contact" class="py-6 sm:py-16 lg:py-24 bg-brand-navy text-white">
-        <div class="max-w-[1200px] mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="grid lg:grid-cols-2 gap-6 lg:gap-12 items-center">
-                <div>
-                    <span class="inline-block px-3 py-1 rounded-md bg-brand-mint/10 text-brand-mint text-xs font-semibold mb-2 sm:mb-4">
-                        CONTACT US
-                    </span>
-                    <h2 class="text-2xl sm:text-4xl lg:text-5xl font-bold mb-2 sm:mb-6 leading-tight break-keep">
-                        기업 가치를 극대화하는<br class="hidden sm:block"> 원스톱 미디어 솔루션 문의
-                    </h2>
-                    <p class="hidden sm:block text-gray-300 text-base mb-8">
-                        교육 컨설팅부터 4K 미디어 프로덕션, 후캠퍼스 평생교육, 디지털 언론 홍보(한국AI교육신문)까지 최적의 통합 솔루션을 친절하고 신속히 상담해 드립니다.
-                    </p>
+    <section id="contact" class="py-10 sm:py-16 lg:py-20 bg-brand-navy text-white">
+        <div class="max-w-[800px] mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-6 sm:mb-8">
+                <span class="inline-block px-3.5 py-1 rounded-full bg-brand-mint/10 text-brand-mint text-xs font-semibold mb-3 border border-brand-mint/20">
+                    EASY CONTACT
+                </span>
+                <h2 class="text-2xl sm:text-4xl font-extrabold mb-3 leading-tight break-keep">
+                    프로젝트 및 제작 상담, 편하게 문의하세요
+                </h2>
+                <p class="text-xs sm:text-sm text-gray-300 font-medium break-keep max-w-xl mx-auto">
+                    어려운 양식 없이 간단한 내용만 작성해 주시면 담당자가 확인 후 빠르고 친절하게 안내해 드립니다.
+                </p>
+            </div>
 
-                    <div class="space-y-2.5 sm:space-y-4">
-                        <a href="tel:02-6443-4222" class="flex items-center gap-3 sm:gap-4 p-3 sm:p-4 rounded-xl bg-white/5 border border-white/10 hover:border-brand-mint/80 hover:bg-white/10 transition-all duration-200 group cursor-pointer">
-                            <div class="w-9 h-9 sm:w-10 sm:h-10 rounded-lg bg-brand-mint text-brand-navy-dark flex items-center justify-center font-bold group-hover:scale-105 transition-transform shrink-0 text-sm sm:text-base">
-                                📞
-                            </div>
-                            <div class="flex-1">
-                                <div class="text-[11px] sm:text-xs text-gray-400 flex items-center justify-between">
-                                    <span>대표 전화</span>
-                                    <span class="text-[10px] text-brand-mint font-semibold bg-brand-mint/10 px-2 py-0.5 rounded border border-brand-mint/20">클릭 시 바로 연결</span>
-                                </div>
-                                <div class="text-base sm:text-lg font-bold text-white group-hover:text-brand-mint transition-colors">02-6443-4222</div>
-                            </div>
-                        </a>
-
-                        <a href="mailto:whomedia6104@gmail.com" class="flex items-center gap-3 sm:gap-4 p-3 sm:p-4 rounded-xl bg-white/5 border border-white/10 hover:border-brand-mint/80 hover:bg-white/10 transition-all duration-200 group cursor-pointer">
-                            <div class="w-9 h-9 sm:w-10 sm:h-10 rounded-lg bg-brand-mint text-brand-navy-dark flex items-center justify-center font-bold group-hover:scale-105 transition-transform shrink-0 text-sm sm:text-base">
-                                ✉️
-                            </div>
-                            <div class="flex-1">
-                                <div class="text-[11px] sm:text-xs text-gray-400 flex items-center justify-between">
-                                    <span>대표 이메일</span>
-                                    <span class="text-[10px] text-brand-mint font-semibold bg-brand-mint/10 px-2 py-0.5 rounded border border-brand-mint/20">클릭 시 메일 작성</span>
-                                </div>
-                                <div class="text-xs sm:text-base font-bold text-white group-hover:text-brand-mint transition-colors break-all">whomedia6104@gmail.com</div>
-                            </div>
-                        </a>
-
-                        <a id="location" 
-                           :href="naverMapUrl" 
-                           target="_blank" 
-                           rel="noopener noreferrer" 
-                           class="flex items-center gap-3 sm:gap-4 p-3 sm:p-4 rounded-xl bg-white/5 border border-white/10 hover:border-brand-mint/80 hover:bg-white/10 transition-all duration-200 group cursor-pointer scroll-mt-24">
-                            <div class="w-9 h-9 sm:w-10 sm:h-10 rounded-lg bg-brand-mint text-brand-navy-dark flex items-center justify-center font-bold group-hover:scale-105 transition-transform shrink-0 text-sm sm:text-base">
-                                📍
-                            </div>
-                            <div class="flex-1">
-                                <div class="text-[11px] sm:text-xs text-gray-400 flex items-center justify-between">
-                                    <span>스튜디오 / 본사 주소</span>
-                                    <span class="text-[10px] text-brand-mint font-semibold bg-brand-mint/10 px-2 py-0.5 rounded border border-brand-mint/20">네이버 지도 열기 ↗</span>
-                                </div>
-                                <div class="text-xs sm:text-sm font-medium text-white group-hover:text-brand-mint transition-colors leading-snug">서울특별시 금천구 가산디지털2로 53 한라시그마밸리 1102~1104호</div>
-                            </div>
-                        </a>
-                    </div>
+            <!-- Inquiry Form -->
+            <div class="bg-white/5 p-5 sm:p-8 rounded-2xl sm:rounded-3xl border border-white/10 backdrop-blur-md shadow-2xl">
+                <div class="flex items-center justify-between mb-4 sm:mb-6 pb-3 border-b border-white/10">
+                    <h3 class="text-base sm:text-lg font-bold text-white">간편 상담 신청</h3>
+                    <span class="text-[10px] sm:text-xs text-brand-mint font-medium bg-brand-mint/10 px-2.5 py-1 rounded-full border border-brand-mint/20">실시간 전송</span>
                 </div>
-
-                <!-- Inquiry Form -->
-                <div class="bg-white/5 p-4 sm:p-8 rounded-2xl sm:rounded-3xl border border-white/10 backdrop-blur-md">
-                    <div class="flex items-center justify-between mb-3 sm:mb-6">
-                        <h3 class="text-base sm:text-xl font-bold text-white">프로젝트 / 임대 문의 상담</h3>
-                        <span class="text-[10px] sm:text-xs text-brand-mint font-medium bg-brand-mint/10 px-2.5 py-1 rounded-full border border-brand-mint/20">실시간 관리자 전달</span>
+                
+                <form @submit.prevent="submitInquiry()" class="space-y-3 sm:space-y-4">
+                    <div>
+                        <label class="block text-xs font-medium text-gray-300 mb-1">기관 / 회사명 (선택)</label>
+                        <input type="text" x-model="inquiryForm.company" placeholder="예: (주)OO에듀 또는 개인" class="w-full px-3.5 py-2.5 sm:px-4 sm:py-3 rounded-xl bg-white/10 border border-white/20 text-white placeholder-gray-500 focus:outline-none focus:border-brand-mint text-xs sm:text-sm">
                     </div>
-                    
-                    <form @submit.prevent="submitInquiry()" class="space-y-2.5 sm:space-y-4">
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4">
                         <div>
-                            <label class="block text-xs font-medium text-gray-300 mb-1">기관 / 회사명 *</label>
-                            <input type="text" x-model="inquiryForm.company" required placeholder="예: (주)OO에듀 또는 개인" class="w-full px-3.5 py-2.5 sm:px-4 sm:py-3 rounded-xl bg-white/10 border border-white/20 text-white placeholder-gray-500 focus:outline-none focus:border-brand-mint text-xs sm:text-sm">
-                        </div>
-                        <div class="grid grid-cols-2 gap-3 sm:gap-4">
-                            <div>
-                                <label class="block text-xs font-medium text-gray-300 mb-1">담당자 성함 *</label>
-                                <input type="text" x-model="inquiryForm.name" required placeholder="홍길동" class="w-full px-3.5 py-2.5 sm:px-4 sm:py-3 rounded-xl bg-white/10 border border-white/20 text-white placeholder-gray-500 focus:outline-none focus:border-brand-mint text-xs sm:text-sm">
-                            </div>
-                            <div>
-                                <label class="block text-xs font-medium text-gray-300 mb-1">연락처 *</label>
-                                <input type="text" x-model="inquiryForm.phone" required placeholder="010-0000-0000" class="w-full px-3.5 py-2.5 sm:px-4 sm:py-3 rounded-xl bg-white/10 border border-white/20 text-white placeholder-gray-500 focus:outline-none focus:border-brand-mint text-xs sm:text-sm">
-                            </div>
+                            <label class="block text-xs font-medium text-gray-300 mb-1">성함 / 담당자 *</label>
+                            <input type="text" x-model="inquiryForm.name" required placeholder="홍길동" class="w-full px-3.5 py-2.5 sm:px-4 sm:py-3 rounded-xl bg-white/10 border border-white/20 text-white placeholder-gray-500 focus:outline-none focus:border-brand-mint text-xs sm:text-sm">
                         </div>
                         <div>
-                            <label class="block text-xs font-medium text-gray-300 mb-1">문의 유형 (사업 영역) *</label>
-                            <select x-model="inquiryForm.category" required class="w-full px-3.5 py-2.5 sm:px-4 sm:py-3 rounded-xl bg-gray-900 border border-white/20 text-white text-xs sm:text-sm focus:outline-none focus:border-brand-mint">
-                                <option value="" disabled selected>문의할 사업 영역을 선택해 주세요</option>
-                                <option value="공공·교육 전문 영상 제작">공공·교육 전문 영상 제작</option>
-                                <option value="이러닝 콘텐츠 기획·개발">이러닝 콘텐츠 기획·개발</option>
-                                <option value="데이터 기반 PR &amp; 마케팅">데이터 기반 PR &amp; 마케팅</option>
-                                <option value="프리미엄 오프라인 아카데미">프리미엄 오프라인 아카데미</option>
-                                <option value="4K 스마트 스튜디오 대여">4K 스마트 스튜디오 대여</option>
-                                <option value="기타 제휴 및 사업 협력">기타 제휴 및 사업 협력</option>
-                            </select>
+                            <label class="block text-xs font-medium text-gray-300 mb-1">연락처 *</label>
+                            <input type="text" x-model="inquiryForm.phone" required placeholder="010-0000-0000" class="w-full px-3.5 py-2.5 sm:px-4 sm:py-3 rounded-xl bg-white/10 border border-white/20 text-white placeholder-gray-500 focus:outline-none focus:border-brand-mint text-xs sm:text-sm">
                         </div>
-                        <div>
-                            <label class="block text-xs font-medium text-gray-300 mb-1">상세 문의 내용 *</label>
-                            <textarea x-model="inquiryForm.message" rows="3" required placeholder="요청하실 과업 사양 혹은 궁금하신 점을 작성해주세요." class="w-full px-3.5 py-2.5 sm:px-4 sm:py-3 rounded-xl bg-white/10 border border-white/20 text-white placeholder-gray-500 focus:outline-none focus:border-brand-mint text-xs sm:text-sm"></textarea>
-                        </div>
-                        <div class="flex items-center gap-2 pt-0.5">
-                            <input type="checkbox" id="consent" x-model="inquiryForm.consent" required class="rounded border-gray-600 bg-white/10 text-brand-mint focus:ring-brand-mint">
-                            <label for="consent" class="text-xs text-gray-300 cursor-pointer">개인정보 수집 및 이용에 동의합니다. *</label>
-                        </div>
-                        <button type="submit" :disabled="inquirySubmitting" class="w-full bg-brand-mint hover:bg-brand-mint-hover text-slate-950 font-black py-3.5 sm:py-4 rounded-xl transition-all text-sm sm:text-base shadow-xl mt-3 flex items-center justify-center gap-2.5 disabled:opacity-60 cursor-pointer active:scale-98">
-                            <span x-text="inquirySubmitting ? '실시간 문의 전송 중...' : '프로젝트 문의 제출하기'">프로젝트 문의 제출하기</span>
-                            <svg x-show="!inquirySubmitting" class="w-4 h-4 sm:w-5 sm:h-5 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
-                            <svg x-show="inquirySubmitting" class="animate-spin h-5 w-5 text-slate-950 shrink-0" fill="none" viewBox="0 0 24 24" x-cloak><circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle><path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path></svg>
-                        </button>
-                    </form>
-                </div>
+                    </div>
+                    <div>
+                        <label class="block text-xs font-medium text-gray-300 mb-1">문의 유형 *</label>
+                        <select x-model="inquiryForm.category" required class="w-full px-3.5 py-2.5 sm:px-4 sm:py-3 rounded-xl bg-gray-900 border border-white/20 text-white text-xs sm:text-sm focus:outline-none focus:border-brand-mint">
+                            <option value="" disabled selected>문의할 희망 항목을 선택해 주세요</option>
+                            <option value="이러닝 콘텐츠 개발">이러닝 콘텐츠 개발</option>
+                            <option value="공공·기업 영상 제작 &amp; PR">공공·기업 영상 제작 &amp; PR</option>
+                            <option value="오프라인 교육 &amp; 특강">오프라인 교육 &amp; 특강</option>
+                            <option value="4K 스마트 스튜디오 대여">4K 스마트 스튜디오 대여</option>
+                            <option value="기타 일반 문의">기타 일반 문의</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label class="block text-xs font-medium text-gray-300 mb-1">문의 내용 *</label>
+                        <textarea x-model="inquiryForm.message" rows="3" required placeholder="궁금하신 점이나 요청사항을 자유롭게 작성해 주세요." class="w-full px-3.5 py-2.5 sm:px-4 sm:py-3 rounded-xl bg-white/10 border border-white/20 text-white placeholder-gray-500 focus:outline-none focus:border-brand-mint text-xs sm:text-sm"></textarea>
+                    </div>
+                    <div class="flex items-center gap-2 pt-0.5">
+                        <input type="checkbox" id="consent" x-model="inquiryForm.consent" required class="rounded border-gray-600 bg-white/10 text-brand-mint focus:ring-brand-mint">
+                        <label for="consent" class="text-xs text-gray-300 cursor-pointer">개인정보 수집 및 이용에 동의합니다. *</label>
+                    </div>
+                    <button type="submit" :disabled="inquirySubmitting" class="w-full bg-brand-mint hover:bg-brand-mint-hover text-slate-950 font-black py-3.5 sm:py-4 rounded-xl transition-all text-sm sm:text-base shadow-xl mt-3 flex items-center justify-center gap-2.5 disabled:opacity-60 cursor-pointer active:scale-98">
+                        <span x-text="inquirySubmitting ? '문의 전송 중...' : '문의 남기기'">문의 남기기</span>
+                        <svg x-show="!inquirySubmitting" class="w-4 h-4 sm:w-5 sm:h-5 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
+                        <svg x-show="inquirySubmitting" class="animate-spin h-5 w-5 text-slate-950 shrink-0" fill="none" viewBox="0 0 24 24" x-cloak><circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle><path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path></svg>
+                    </button>
+                </form>
             </div>
         </div>
     </section>
 
     <!-- FOOTER -->
-    <footer class="bg-brand-navy-dark py-12 pb-20 md:pb-12 border-t border-gray-800 text-gray-400 text-xs">
+    <footer class="bg-brand-navy-dark py-10 pb-20 md:pb-10 border-t border-gray-800 text-gray-400 text-xs">
         <div class="max-w-[1200px] mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="mb-8">
+            <div class="mb-6 flex flex-col md:flex-row md:items-center justify-between gap-4">
                 <div>
-                    <div class="mb-3">
+                    <div class="mb-2">
                         <a href="#" class="inline-flex items-center text-2xl sm:text-3xl font-black brand-logo-font logo-glow-dark-bg select-none tracking-tight">
                             <span class="font-black" style="color: #FF0000; text-shadow: 0 0 10px rgba(255,0,0,0.4);">WHO</span>
                             <span class="font-black ml-[1px]" style="color: #FFFFFF;">MEDIA</span>
                         </a>
                     </div>
-                    <p class="text-gray-400">㈜후미디어 | 프리미엄 영상 제작, 교육 콘텐츠 컨설팅 &amp; 4K 스튜디오 대여 전문기업</p>
+                    <p class="text-gray-400">㈜후미디어 | 프리미엄 영상 제작, 교육 콘텐츠 개발 &amp; 4K 스튜디오 대여 전문기업</p>
+                </div>
+
+                <!-- Footer Quick Contacts (Relocated Here) -->
+                <div class="flex flex-wrap items-center gap-3 text-xs text-gray-300 bg-white/5 p-3 sm:p-4 rounded-xl border border-white/10">
+                    <a href="tel:02-6443-4222" class="hover:text-brand-mint transition-colors flex items-center gap-1.5 font-bold">
+                        <span class="text-brand-mint">📞</span> 대표전화 : 02-6443-4222
+                    </a>
+                    <span class="text-gray-600 hidden sm:inline">|</span>
+                    <a href="mailto:whomedia6104@gmail.com" class="hover:text-brand-mint transition-colors flex items-center gap-1.5 font-bold">
+                        <span class="text-brand-mint">✉️</span> 대표이메일 : whomedia6104@gmail.com
+                    </a>
                 </div>
             </div>
 
-            <div class="space-y-1 text-gray-500 border-t border-gray-800/80 pt-6">
+            <div class="space-y-1 text-gray-500 border-t border-gray-800/80 pt-5">
                 <p>법인명 : (주)후미디어 ｜ 대표이사 : 황광성 ｜ 사업자등록번호 : 119-86-25861</p>
-                <p>본사 및 스튜디오 : 서울특별시 금천구 가산디지털2로 53 (가산동) 한라시그마밸리 1102호 ~ 1104호</p>
-                <div class="pt-4 flex items-center justify-between flex-wrap gap-2 text-gray-600">
+                <p>스튜디오 및 본사 : 서울특별시 금천구 가산디지털2로 53 (가산동) 한라시그마밸리 1102호 ~ 1104호</p>
+                <div class="pt-3 flex items-center justify-between flex-wrap gap-2 text-gray-600">
                     <p>© 2026 WHO MEDIA Corp. All rights reserved.</p>
                 </div>
             </div>

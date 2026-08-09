@@ -47,7 +47,7 @@ document.addEventListener('alpine:init', () => {
         imageModalOpen: false,
         activeStudioImg: '',
         activeStudioTitle: '',
-        keywords: ['교수설계 기반 맞춤형 이러닝 콘텐츠 기획·개발 (공공·기업·대학 전문)', '4K 고화질 미디어 프로덕션 & 크리에이티브', '에듀테크 기반 최신 디지털 학습 시스템', '4K 가상 크로마키 & 전자칠판 스튜디오', '오프라인 전문 교육 & 브랜드 PR 통합 솔루션'],
+        keywords: ['교수설계 기반 맞춤형 이러닝 콘텐츠 개발 (공공·기업·대학 전문)', '4K 고화질 미디어 프로덕션 & 크리에이티브', '에듀테크 기반 최신 디지털 학습 시스템', '4K 가상 크로마키 & 전자칠판 스튜디오', '오프라인 전문 교육 & 브랜드 PR 통합 솔루션'],
         currentKeywordIndex: 0,
 
         // [전체 포트폴리오 목록 - PORTFOLIO_DATA 상수로 100% 보장]
