@@ -176,6 +176,12 @@ document.addEventListener('alpine:init', () => {
                 this.serviceAutoTimer = null;
             }
         },
+        restartServiceAutoPlay(delay = 6000) {
+            this.stopServiceAutoPlay();
+            setTimeout(() => {
+                this.startServiceAutoPlay();
+            }, delay);
+        },
         nextServiceCard() {
             this.activeServiceIndex = (this.activeServiceIndex + 1) % 3;
             this.scrollToServiceCard();
@@ -189,11 +195,12 @@ document.addEventListener('alpine:init', () => {
             this.scrollToServiceCard();
         },
         scrollToServiceCard() {
-            const container = document.getElementById('services-cards-container');
+            const container = document.getElementById('service-cards-container') || document.getElementById('services-cards-container');
             const targetCard = document.getElementById('service-card-' + this.activeServiceIndex);
             if (container && targetCard) {
+                const scrollLeft = targetCard.offsetLeft - container.offsetLeft - (container.clientWidth / 2) + (targetCard.clientWidth / 2);
                 container.scrollTo({
-                    left: targetCard.offsetLeft - container.offsetLeft - 16,
+                    left: Math.max(0, scrollLeft),
                     behavior: 'smooth'
                 });
             }
@@ -330,8 +337,9 @@ document.addEventListener('alpine:init', () => {
             const container = document.getElementById('about-cards-container');
             const targetCard = document.getElementById('about-card-' + this.aboutActiveIndex);
             if (container && targetCard) {
+                const scrollLeft = targetCard.offsetLeft - container.offsetLeft - (container.clientWidth / 2) + (targetCard.clientWidth / 2);
                 container.scrollTo({
-                    left: targetCard.offsetLeft - container.offsetLeft - 16,
+                    left: Math.max(0, scrollLeft),
                     behavior: 'smooth'
                 });
             }

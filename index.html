@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-   <title>후미디어 TEST-0809-A | 이러닝부터 마케팅까지</title>
+    <title>후미디어 | 이러닝부터 마케팅까지, 통합 솔루션</title>
     
     <!-- SEO & Basic Meta Tags -->
     <meta name="description" content="이러닝 기획부터 영상 제작, 마케팅 확산까지. 성공적인 과업 수행을 위한 (주)후미디어의 원스톱 통합 솔루션">
@@ -558,7 +558,7 @@
             </div>
 
             <div class="flex items-center justify-between gap-2 mb-4 sm:mb-6 overflow-x-auto no-scrollbar pb-1 max-w-4xl mx-auto">
-                <button @click="prevServiceCard(); stopServiceAutoPlay(); setTimeout(() => startServiceAutoPlay(), 8000);" 
+                <button @click="prevServiceCard(); restartServiceAutoPlay(8000);" 
                         class="p-2 sm:p-2.5 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-700 transition-all shrink-0 active:scale-95 cursor-pointer shadow-xs"
                         title="이전 사업 영역">
                     <svg class="w-4 h-4 sm:w-5 sm:h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M15 19l-7-7 7-7"/></svg>
@@ -566,21 +566,21 @@
 
                 <!-- Category Pills Bar -->
                 <div class="flex items-center gap-1.5 sm:gap-3 overflow-x-auto no-scrollbar py-0.5 px-1 flex-1 justify-start sm:justify-center">
-                    <button @click="selectServiceCard(0); stopServiceAutoPlay(); setTimeout(() => startServiceAutoPlay(), 8000);"
+                    <button @click="selectServiceCard(0); restartServiceAutoPlay(8000);"
                             :class="activeServiceIndex === 0 ? 'bg-teal-600 text-white font-black shadow-lg scale-102 border-teal-600 ring-2 ring-teal-500/30' : 'bg-slate-100 text-slate-600 hover:bg-slate-200 font-semibold border-slate-200'"
                             class="px-3.5 py-2 sm:px-5 sm:py-2.5 rounded-xl text-xs sm:text-sm border transition-all duration-300 shrink-0 cursor-pointer flex items-center gap-2">
                         <span class="w-2.5 h-2.5 rounded-full" :class="activeServiceIndex === 0 ? 'bg-white animate-pulse' : 'bg-teal-500'"></span>
                         <span>1. 이러닝 콘텐츠 개발</span>
                     </button>
 
-                    <button @click="selectServiceCard(1); stopServiceAutoPlay(); setTimeout(() => startServiceAutoPlay(), 8000);"
+                    <button @click="selectServiceCard(1); restartServiceAutoPlay(8000);"
                             :class="activeServiceIndex === 1 ? 'bg-cyan-600 text-white font-black shadow-lg scale-102 border-cyan-600 ring-2 ring-cyan-500/30' : 'bg-slate-100 text-slate-600 hover:bg-slate-200 font-semibold border-slate-200'"
                             class="px-3.5 py-2 sm:px-5 sm:py-2.5 rounded-xl text-xs sm:text-sm border transition-all duration-300 shrink-0 cursor-pointer flex items-center gap-2">
                         <span class="w-2.5 h-2.5 rounded-full" :class="activeServiceIndex === 1 ? 'bg-white animate-pulse' : 'bg-cyan-500'"></span>
                         <span>2. 영상 제작·마케팅</span>
                     </button>
 
-                    <button @click="selectServiceCard(2); stopServiceAutoPlay(); setTimeout(() => startServiceAutoPlay(), 8000);"
+                    <button @click="selectServiceCard(2); restartServiceAutoPlay(8000);"
                             :class="activeServiceIndex === 2 ? 'bg-amber-600 text-white font-black shadow-lg scale-102 border-amber-600 ring-2 ring-amber-500/30' : 'bg-slate-100 text-slate-600 hover:bg-slate-200 font-semibold border-slate-200'"
                             class="px-3.5 py-2 sm:px-5 sm:py-2.5 rounded-xl text-xs sm:text-sm border transition-all duration-300 shrink-0 cursor-pointer flex items-center gap-2">
                         <span class="w-2.5 h-2.5 rounded-full" :class="activeServiceIndex === 2 ? 'bg-white animate-pulse' : 'bg-amber-500'"></span>
@@ -588,7 +588,7 @@
                     </button>
                 </div>
 
-                <button @click="nextServiceCard(); stopServiceAutoPlay(); setTimeout(() => startServiceAutoPlay(), 8000);" 
+                <button @click="nextServiceCard(); restartServiceAutoPlay(8000);" 
                         class="p-2 sm:p-2.5 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-700 transition-all shrink-0 active:scale-95 cursor-pointer shadow-xs"
                         title="다음 사업 영역">
                     <svg class="w-4 h-4 sm:w-5 sm:h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M9 5l7 7-7 7"/></svg>
