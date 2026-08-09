@@ -220,24 +220,24 @@ document.addEventListener('alpine:init', () => {
                 tag: '전자칠판 스튜디오',
                 tagColor: 'text-brand-mint border-brand-mint/30 bg-brand-mint/15',
                 title: '86인치 UHD 스마트 전자칠판 스튜디오',
-                imageUrl: 'https://images.unsplash.com/photo-1577896851231-70ef18881754?auto=format&fit=crop&w=1200&q=85',
-                thumbUrl: 'https://images.unsplash.com/photo-1577896851231-70ef18881754?auto=format&fit=crop&w=400&q=80'
+                imageUrl: 'https://images.unsplash.com/photo-1524178232363-1fb2b075b655?auto=format&fit=crop&w=1200&q=85',
+                thumbUrl: 'https://images.unsplash.com/photo-1524178232363-1fb2b075b655?auto=format&fit=crop&w=400&q=80'
             },
             {
                 id: 'green_board_studio',
                 tag: '녹색 칠판 스튜디오',
                 tagColor: 'text-teal-300 border-teal-500/30 bg-teal-500/15',
                 title: '특수 무반사 조명 판서 칠판 스튜디오',
-                imageUrl: 'https://images.unsplash.com/photo-1580582932707-520aed937b7b?auto=format&fit=crop&w=1200&q=85',
-                thumbUrl: 'https://images.unsplash.com/photo-1580582932707-520aed937b7b?auto=format&fit=crop&w=400&q=80'
+                imageUrl: 'https://images.unsplash.com/photo-1509062522246-3755977927d7?auto=format&fit=crop&w=1200&q=85',
+                thumbUrl: 'https://images.unsplash.com/photo-1509062522246-3755977927d7?auto=format&fit=crop&w=400&q=80'
             },
             {
                 id: 'chromakey_studio',
                 tag: '크로마키 스튜디오',
                 tagColor: 'text-emerald-400 border-emerald-500/30 bg-emerald-500/15',
                 title: '6.6m 대형 곡면 크로마키 세트',
-                imageUrl: 'https://images.unsplash.com/photo-1581092160607-ee22621dd758?auto=format&fit=crop&w=1200&q=85',
-                thumbUrl: 'https://images.unsplash.com/photo-1581092160607-ee22621dd758?auto=format&fit=crop&w=400&q=80'
+                imageUrl: 'https://images.unsplash.com/photo-1574717024653-61fd2cf4d44d?auto=format&fit=crop&w=1200&q=85',
+                thumbUrl: 'https://images.unsplash.com/photo-1574717024653-61fd2cf4d44d?auto=format&fit=crop&w=400&q=80'
             },
             {
                 id: 'camera_lighting',
@@ -252,8 +252,8 @@ document.addEventListener('alpine:init', () => {
                 tag: '강의 및 실습 스튜디오',
                 tagColor: 'text-blue-400 border-blue-500/30 bg-blue-500/15',
                 title: '브랜딩 미디어 & 좌담회 촬영 세트',
-                imageUrl: 'https://images.unsplash.com/photo-1531482615713-2afd69097998?auto=format&fit=crop&w=1200&q=85',
-                thumbUrl: 'https://images.unsplash.com/photo-1531482615713-2afd69097998?auto=format&fit=crop&w=400&q=80'
+                imageUrl: 'https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=1200&q=85',
+                thumbUrl: 'https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=400&q=80'
             },
             {
                 id: 'control_room',
@@ -268,8 +268,8 @@ document.addEventListener('alpine:init', () => {
                 tag: '분장 & 대기실',
                 tagColor: 'text-amber-300 border-amber-500/30 bg-amber-500/15',
                 title: '출연진 프라이빗 분장실 & 파우더룸',
-                imageUrl: 'https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=1200&q=85',
-                thumbUrl: 'https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=400&q=80'
+                imageUrl: 'https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?auto=format&fit=crop&w=1200&q=85',
+                thumbUrl: 'https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?auto=format&fit=crop&w=400&q=80'
             }
         ],
 
