@@ -1,14 +1,34 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" fill="none">
-  <g>
-    <!-- Center Diamond -->
-    <path d="M50 4L66 50L50 96L34 50Z" fill="#F8FAFC" />
-    <!-- Left Inner Wing -->
-    <path d="M31 13L47 4L32 50L47 96L31 87L15 50Z" fill="#CBD5E1" />
-    <!-- Left Outer Wing -->
-    <path d="M12 23L28 14L13 50L28 86L12 77Z" fill="#94A3B8" />
-    <!-- Right Inner Wing -->
-    <path d="M69 13L53 4L68 50L53 96L69 87L85 50Z" fill="#CBD5E1" />
-    <!-- Right Outer Wing -->
-    <path d="M88 23L72 14L87 50L72 86L88 77Z" fill="#94A3B8" />
-  </g>
+  <defs>
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#20242B" />
+      <stop offset="100%" stop-color="#0B0D11" />
+    </linearGradient>
+    <linearGradient id="highlightGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#383D48" />
+      <stop offset="100%" stop-color="#181B20" />
+    </linearGradient>
+    <filter id="shadow" x="-10%" y="-10%" width="120%" height="120%">
+      <feDropShadow dx="0" dy="2" stdDeviation="2" flood-color="#000" flood-opacity="0.8"/>
+    </filter>
+  </defs>
+
+  <!-- Outer Hexagon Base -->
+  <polygon points="50,4 88,24 88,76 50,96 12,76 12,24" fill="url(#bgGrad)" stroke="#090A0D" stroke-width="2.5" filter="url(#shadow)" />
+  
+  <!-- Left Outer Cut -->
+  <path d="M14 26L28 17L14 50L28 83L14 74Z" fill="#14171D" stroke="#08090C" stroke-width="1.2" />
+  
+  <!-- Left Inner Cut -->
+  <path d="M31 16L47 7L32 50L47 93L31 84L16 50Z" fill="url(#highlightGrad)" stroke="#08090C" stroke-width="1.2" />
+
+  <!-- Center Diamond Cut -->
+  <path d="M50 8L66 50L50 92L34 50Z" fill="#2D323C" stroke="#08090C" stroke-width="1.5" />
+  <path d="M50 14L62 50L50 86L38 50Z" fill="#181B20" />
+
+  <!-- Right Inner Cut -->
+  <path d="M69 16L53 7L68 50L53 93L69 84L84 50Z" fill="url(#highlightGrad)" stroke="#08090C" stroke-width="1.2" />
+
+  <!-- Right Outer Cut -->
+  <path d="M86 26L72 17L86 50L72 83L86 74Z" fill="#14171D" stroke="#08090C" stroke-width="1.2" />
 </svg>
