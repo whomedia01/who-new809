@@ -1,5 +1,10 @@
 // [정적 데이터 상수 강제 매핑 - API/DB 의존성 제거]
 const PORTFOLIO_DATA = [
+    { id: 'dEPkxRTjsy8', title: '한양대 토크콘서트 인트로 영상', cat: 'production', tag: '한양대', label: '모션그래픽' },
+    { id: 'nzSjVbxNrnc', title: 'NE능률 나는쌤이다 웹예능 콘텐츠', cat: 'edu', tag: 'NE능률', label: '교육 콘텐츠' },
+    { id: 'PAvJORGcUTU', title: '에듀팡 일본어 모션그래픽 인트로', cat: 'production', tag: '에듀팡', label: '모션그래픽' },
+    { id: '4cnYAzIvagw', title: '동아출판 AI 디지털 교과서 교사 인터뷰', cat: 'edu', tag: '동아출판', label: 'AI 디지털 교과서' },
+    { id: 'DIdduzeub5U', title: '후미디어 뉴미디어 채널 브랜딩 인트로', cat: 'production', tag: 'WHOMEDIA', label: '채널 인트로' },
     { id: '0kHSItVXKOU', title: '능률 고등 영어 교재 연계 스마트 강좌', cat: 'edu', tag: 'NE능률', label: '이러닝 콘텐츠 개발' },
     { id: '6xb2GYInARg', title: '능률 중등 영어 맞춤형 학습 영상', cat: 'edu', tag: 'NE능률', label: '교육 콘텐츠' },
     { id: 'rJ2U9T27WwU', title: '태진옥 브랜드 시네마틱 홍보영상', cat: 'press', tag: '태진옥', label: '홍보 영상 제작' },
@@ -46,7 +51,7 @@ document.addEventListener('alpine:init', () => {
         imageModalOpen: false,
         activeStudioImg: '',
         activeStudioTitle: '',
-        keywords: ['교육의 미래를 완성하다', '교수설계 기반 맞춤형 이러닝 콘텐츠 개발', '160평 전문 스튜디오 & 고품질 영상 연출', '실전 맞춤형 오프라인 아카데미 & 전문 특강', '지속가능한 성장을 이끄는 조직 체계'],
+        keywords: ['이러닝·영상 제작 및 오프라인 교육 맞춤형 파트너', '교수설계 기반 맞춤형 이러닝 콘텐츠 개발', '160평 전문 스튜디오 & 고품질 영상 연출', '실전 맞춤형 오프라인 아카데미 & 전문 특강', '지속가능한 성장을 이끄는 조직 체계'],
         currentKeywordIndex: 0,
 
         // [전체 포트폴리오 목록 - PORTFOLIO_DATA 상수로 100% 보장]
