@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" fill="none">
+  <g>
+    <!-- Center Diamond -->
+    <path d="M50 4L66 50L50 96L34 50Z" fill="#F8FAFC" />
+    <!-- Left Inner Wing -->
+    <path d="M31 13L47 4L32 50L47 96L31 87L15 50Z" fill="#CBD5E1" />
+    <!-- Left Outer Wing -->
+    <path d="M12 23L28 14L13 50L28 86L12 77Z" fill="#94A3B8" />
+    <!-- Right Inner Wing -->
+    <path d="M69 13L53 4L68 50L53 96L69 87L85 50Z" fill="#CBD5E1" />
+    <!-- Right Outer Wing -->
+    <path d="M88 23L72 14L87 50L72 86L88 77Z" fill="#94A3B8" />
+  </g>
+</svg>
