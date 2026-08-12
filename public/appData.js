@@ -22,13 +22,14 @@ const PORTFOLIO_DATA = [
     { id: '-Is7q7qD9Rc', title: '한국AI교육신문 & 뉴미디어 언론 브랜딩', cat: 'press', tag: '유튜브홍보', label: '디지털 언론 홍보' }
 ];
 
-// GitHub + jsDelivr CDN 우회 연동 설정 (사용자 GitHub 계정명 및 저장소명 플레이스홀더)
-const GITHUB_USER = '내유저명';   // 사용자 GitHub 계정명으로 교체 (예: 'whomedia')
-const GITHUB_REPO = '내저장소명'; // 사용자 GitHub 저장소명으로 교체 (예: 'studio-gallery')
+// GitHub 저장소 연동 설정 (whomedia01/whomedia4)
+const GITHUB_USER = 'whomedia01';   // GitHub 사용자 계정
+const GITHUB_REPO = 'whomedia4';   // GitHub 이미지 저장소
 const GITHUB_BRANCH = 'main';
 
-// jsDelivr 글로벌 CDN 이미지 URL 생성 유틸리티 (raw.githubusercontent.com 직접 링크 금지 지침 준수)
+// GitHub / jsDelivr 글로벌 CDN 이미지 URL 생성 유틸리티
 const getStudioCdnUrl = (fileName) => `https://cdn.jsdelivr.net/gh/${GITHUB_USER}/${GITHUB_REPO}@${GITHUB_BRANCH}/images/studio/${fileName}`;
+const getGithubRawUrl = (fileName) => `https://raw.githubusercontent.com/${GITHUB_USER}/${GITHUB_REPO}/${GITHUB_BRANCH}/images/studio/${fileName}`;
 
 const STUDIO_IMAGES = [
     getStudioCdnUrl('studio_chromakey_6.6m.jpg'),
