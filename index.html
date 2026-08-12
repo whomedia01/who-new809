@@ -428,7 +428,7 @@
                 imageModalOpen: false,
                 activeStudioImg: '',
                 activeStudioTitle: '',
-                keywords: ['지식을 성과로 만드는 맞춤형 교육 솔루션', '맞춤형 이러닝 콘텐츠 개발', '160평 전문 스튜디오 & 고품질 영상 연출', '실전 맞춤형 오프라인 아카데미 & 전문 특강', '지속가능한 성장을 이끄는 조직 체계'],
+                keywords: ['지식을 성과로 만드는 맞춤형 교육 솔루션', '맞춤형 이러닝 콘텐츠 개발', '160평 전문 스튜디오 & 고품질 영상 연출', '오프라인 기반 블렌디드 러닝 & 전문 특강', '지속가능한 성장을 이끄는 조직 체계'],
                 currentKeywordIndex: 0,
 
                 // [전체 포트폴리오 목록 - PORTFOLIO_DATA 상수로 100% 보장]
@@ -1019,7 +1019,7 @@
                 </h1>
 
                 <p class="hidden sm:block text-slate-200 text-xs sm:text-base lg:text-lg font-normal sm:font-medium leading-relaxed max-w-2xl pt-1 break-keep drop-shadow-lg">
-                    다년간 축적된 B2B·B2G 수행 경험을 바탕으로, 온라인 미디어 제작부터 오프라인 교육까지 교육 목표에 부합하는 종합 솔루션을 제안합니다.
+                    다년간 축적된 B2B·B2G 수행 경험을 바탕으로, 온라인 미디어 제작부터 오프라인 기반 블렌디드 러닝까지 교육 목표에 부합하는 종합 솔루션을 제안합니다.
                 </p>
             </div>
         </div>
@@ -1032,6 +1032,9 @@
                     <source src="https://raw.githubusercontent.com/whomedia01/whomedia4/main/whomedia_hero.mp4" type="video/mp4" />
                 </video>
                 <div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/20 to-slate-950/40 pointer-events-none md:hidden"></div>
+                <!-- Enhanced Mobile Bottom Blur & Gradient Overlay to obscure Gemini logo -->
+                <div class="absolute bottom-0 inset-x-0 h-2/5 bg-gradient-to-t from-slate-950 via-slate-950/95 via-40% to-transparent backdrop-blur-2xl pointer-events-none md:hidden"></div>
+                <div class="absolute bottom-0 right-0 w-2/3 h-20 bg-slate-950/90 filter blur-xl pointer-events-none md:hidden"></div>
             </div>
 
             <div class="absolute inset-0 z-10 bg-gradient-to-b from-[#0A0E1A]/60 via-[#0D1424]/35 to-[#0A0E1A]/75 pointer-events-none hidden md:block"></div>
@@ -1496,7 +1499,7 @@
                     미디어·교육 핵심 사업 영역
                 </span>
                 <h2 class="text-2xl sm:text-3xl lg:text-4xl font-black text-slate-900 tracking-tight leading-tight mb-2 sm:mb-3 break-keep">
-                    이러닝 개발 · 전문 영상 제작 · 오프라인 교육
+                    이러닝 개발 · 전문 영상 제작 · 블렌디드 러닝
                 </h2>
                 <p class="text-slate-600 text-xs sm:text-base font-medium break-keep max-w-3xl mx-auto">
                     각 사업 영역별 독립된 전문 체계와 핵심 역량을 융합하여, 클라이언트의 요구사항에 부합하는 맞춤형 서비스를 제공합니다.
@@ -1531,7 +1534,7 @@
                             :class="activeServiceIndex === 2 ? 'bg-amber-600 text-white font-black shadow-md border-amber-600 ring-2 ring-amber-500/30' : 'bg-slate-100 text-slate-600 hover:bg-slate-200 font-bold border-slate-200'"
                             class="px-2 py-2.5 sm:px-5 sm:py-2.5 rounded-xl text-[11px] xs:text-xs sm:text-sm border transition-all duration-300 cursor-pointer flex items-center justify-center gap-1 sm:gap-2 text-center">
                         <span class="w-2 h-2 sm:w-2.5 sm:h-2.5 rounded-full shrink-0" :class="activeServiceIndex === 2 ? 'bg-white animate-pulse' : 'bg-amber-500'"></span>
-                        <span class="truncate">3. 오프라인 교육</span>
+                        <span class="truncate">3. 블렌디드 러닝</span>
                     </button>
                 </div>
 
@@ -1654,7 +1657,7 @@
                     </div>
                 </div>
 
-                <!-- Slide 2: 오프라인 아카데미 교육 -->
+                <!-- Slide 2: 오프라인 기반 블렌디드 러닝 -->
                 <div x-show="activeServiceIndex === 2"
                      x-transition:enter="transition ease-out duration-600 transform opacity-0 translate-x-12 scale-98"
                      x-transition:enter-start="opacity-0 translate-x-12 scale-98"
@@ -1665,42 +1668,42 @@
                      class="w-full h-full p-5 sm:p-8 lg:p-10 grid grid-cols-1 md:grid-cols-12 gap-6 items-center">
                     <div class="md:col-span-5 relative aspect-[16/10] md:aspect-square rounded-2xl overflow-hidden bg-slate-950 shadow-xl border border-slate-800 group">
                         <img src="https://images.unsplash.com/photo-1524178232363-1fb2b075b655?auto=format&fit=crop&w=1000&q=80" 
-                             alt="오프라인 아카데미 교육" 
+                             alt="오프라인 기반 블렌디드 러닝" 
                              referrerpolicy="no-referrer"
                              class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
                         <div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/40 to-transparent"></div>
                         <span class="absolute top-3 left-3 px-3 py-1 bg-amber-500 text-slate-950 text-xs font-black rounded-lg shadow-md">
-                            03. OFFLINE ACADEMY
+                            03. BLENDED LEARNING
                         </span>
                         <div class="absolute bottom-3 left-3 right-3">
-                            <span class="text-white font-black text-lg sm:text-xl drop-shadow block">오프라인 아카데미</span>
-                            <span class="text-amber-300 text-xs font-bold block mt-0.5">후캠퍼스 평생교육원 연계</span>
+                            <span class="text-white font-black text-lg sm:text-xl drop-shadow block">블렌디드 러닝</span>
+                            <span class="text-amber-300 text-xs font-bold block mt-0.5">오프라인 기반 현장 중심 솔루션</span>
                         </div>
                     </div>
                     <div class="md:col-span-7 flex flex-col justify-between space-y-3 sm:space-y-4">
                         <div>
                             <span class="inline-block px-3 py-1 rounded-full bg-amber-500/20 text-amber-300 border border-amber-500/30 text-xs font-bold mb-2">
-                                현장 실무 실습 &amp; 마스터클래스
+                                오프라인 현장 실무 &amp; 온·오프라인 융합
                             </span>
                             <h3 class="text-xl sm:text-2xl lg:text-3xl font-black text-white leading-tight break-keep mb-2">
-                                실전 맞춤형 오프라인 아카데미 &amp; 전문 특강
+                                오프라인 기반 블렌디드 러닝 &amp; 전문 특강
                             </h3>
                             <p class="text-xs sm:text-sm text-slate-300 leading-relaxed font-normal break-keep mb-3">
-                                현장 밀착형 인사이트와 분야별 최고 전문가의 직강으로 실무에 즉시 적용 가능한 오프라인 실전 특강과 마스터클래스를 제공합니다.
+                                오프라인 현장 강연 및 실습을 중심으로 온라인 콘텐츠와의 시너지를 극대화한 오프라인 기반 블렌디드 러닝 솔루션을 제공합니다.
                             </p>
                         </div>
                         <ul class="space-y-2 bg-slate-800/80 p-3.5 sm:p-4 rounded-xl border border-slate-700/70 text-xs sm:text-sm font-semibold text-slate-200">
                             <li class="flex items-center gap-2">
                                 <span class="w-2 h-2 rounded-full bg-amber-400"></span>
-                                <span class="text-amber-300 font-bold">분야별 최고 권위자 직강 및 1:1 맞춤 실전 피드백</span>
+                                <span class="text-amber-300 font-bold">오프라인 현장 직강과 온라인 연계 융합 학습(Blended Learning)</span>
                             </li>
                             <li class="flex items-center gap-2">
                                 <span class="w-2 h-2 rounded-full bg-amber-400"></span>
-                                <span>스마트 스튜디오 시설을 활용한 현장 실습 및 촬영 코스</span>
+                                <span>스마트 스튜디오 및 현장 출강 연계 오프라인 중심 밀착 교육</span>
                             </li>
                             <li class="flex items-center gap-2">
                                 <span class="w-2 h-2 rounded-full bg-amber-400"></span>
-                                <span>기업 B2B 맞춤형 출강 교육 및 원데이 마스터클래스 운영</span>
+                                <span>B2B·B2G 맞춤형 오프라인 기반 워크숍 및 마스터클래스</span>
                             </li>
                         </ul>
                     </div>
@@ -2021,7 +2024,7 @@
                             <option value="" disabled selected>문의할 희망 항목을 선택해 주세요</option>
                             <option value="이러닝 콘텐츠 개발">이러닝 콘텐츠 개발</option>
                             <option value="공공·기업 영상 제작 &amp; 홍보">공공·기업 영상 제작 &amp; 홍보</option>
-                            <option value="오프라인 교육 &amp; 특강">오프라인 교육 &amp; 특강</option>
+                            <option value="블렌디드 러닝 &amp; 오프라인 교육">블렌디드 러닝 &amp; 오프라인 교육</option>
                             <option value="스마트 스튜디오 대여">스마트 스튜디오 대여</option>
                             <option value="기타 일반 문의">기타 일반 문의</option>
                         </select>
@@ -2084,10 +2087,6 @@
 
     <!-- MOBILE QUICK FLOATING APP DOCK NAVIGATION -->
     <div class="md:hidden fixed bottom-0 left-0 right-0 z-40 bg-slate-950/95 backdrop-blur-xl border-t border-slate-800/90 px-2 py-2 flex items-center justify-around shadow-2xl select-none">
-        <button @click="window.scrollTo({top: 0, behavior: 'smooth'})" class="flex flex-col items-center justify-center py-1 px-2 text-slate-300 hover:text-white transition-colors">
-            <svg class="w-5 h-5 text-brand-mint" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"/></svg>
-            <span class="text-[10px] font-bold mt-0.5">홈</span>
-        </button>
         <a href="#services" class="flex flex-col items-center justify-center py-1 px-2 text-slate-300 hover:text-white transition-colors">
             <svg class="w-5 h-5 text-cyan-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
             <span class="text-[10px] font-bold mt-0.5">사업영역</span>
@@ -2097,12 +2096,16 @@
             <span class="text-[10px] font-bold mt-0.5">스튜디오</span>
         </a>
         <a href="#reference" class="flex flex-col items-center justify-center py-1 px-2 text-slate-300 hover:text-white transition-colors">
-            <svg class="w-5 h-5 text-purple-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"/></svg>
+            <svg class="w-5 h-5 text-purple-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 012-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"/></svg>
             <span class="text-[10px] font-bold mt-0.5">포트폴리오</span>
         </a>
-        <a href="tel:02-6443-4222" class="flex flex-col items-center justify-center py-1 px-2.5 bg-brand-mint text-slate-950 rounded-xl font-extrabold shadow-md active:scale-95 transition-transform">
-            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/></svg>
-            <span class="text-[10px] font-black mt-0.5">전화연결</span>
+        <a :href="naverMapUrl" target="_blank" rel="noopener noreferrer" class="flex flex-col items-center justify-center py-1 px-2 text-slate-300 hover:text-white transition-colors">
+            <svg class="w-5 h-5 text-emerald-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
+            <span class="text-[10px] font-bold mt-0.5">오시는길</span>
+        </a>
+        <a href="#contact" class="flex flex-col items-center justify-center py-1 px-2.5 bg-brand-mint text-slate-950 rounded-xl font-extrabold shadow-md active:scale-95 transition-transform">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"/></svg>
+            <span class="text-[10px] font-black mt-0.5">문의하기</span>
         </a>
     </div>
 

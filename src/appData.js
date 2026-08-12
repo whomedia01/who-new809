@@ -59,7 +59,7 @@ document.addEventListener('alpine:init', () => {
         imageModalOpen: false,
         activeStudioImg: '',
         activeStudioTitle: '',
-        keywords: ['지식을 성과로 만드는 맞춤형 교육 솔루션', '맞춤형 이러닝 콘텐츠 개발', '160평 전문 스튜디오 & 고품질 영상 연출', '실전 맞춤형 오프라인 아카데미 & 전문 특강', '지속가능한 성장을 이끄는 조직 체계'],
+        keywords: ['지식을 성과로 만드는 맞춤형 교육 솔루션', '맞춤형 이러닝 콘텐츠 개발', '160평 전문 스튜디오 & 고품질 영상 연출', '오프라인 기반 블렌디드 러닝 & 전문 특강', '지속가능한 성장을 이끄는 조직 체계'],
         currentKeywordIndex: 0,
 
         // [전체 포트폴리오 목록 - PORTFOLIO_DATA 상수로 100% 보장]
