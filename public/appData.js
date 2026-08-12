@@ -22,14 +22,22 @@ const PORTFOLIO_DATA = [
     { id: '-Is7q7qD9Rc', title: '한국AI교육신문 & 뉴미디어 언론 브랜딩', cat: 'press', tag: '유튜브홍보', label: '디지털 언론 홍보' }
 ];
 
+// GitHub + jsDelivr CDN 우회 연동 설정 (사용자 GitHub 계정명 및 저장소명 플레이스홀더)
+const GITHUB_USER = '내유저명';   // 사용자 GitHub 계정명으로 교체 (예: 'whomedia')
+const GITHUB_REPO = '내저장소명'; // 사용자 GitHub 저장소명으로 교체 (예: 'studio-gallery')
+const GITHUB_BRANCH = 'main';
+
+// jsDelivr 글로벌 CDN 이미지 URL 생성 유틸리티 (raw.githubusercontent.com 직접 링크 금지 지침 준수)
+const getStudioCdnUrl = (fileName) => `https://cdn.jsdelivr.net/gh/${GITHUB_USER}/${GITHUB_REPO}@${GITHUB_BRANCH}/images/studio/${fileName}`;
+
 const STUDIO_IMAGES = [
-    '/DSCF0173.jpg',
-    '/DSCF0231.jpg',
-    '/DSCF0189.jpg',
-    '/DSCF0194.jpg',
-    '/DSCF0142.jpg',
-    '/DSCF0224.jpg',
-    '/DSCF0243.jpg'
+    getStudioCdnUrl('studio_chromakey_6.6m.jpg'),
+    getStudioCdnUrl('studio_main_160py.jpg'),
+    getStudioCdnUrl('studio_smartboard_86in.jpg'),
+    getStudioCdnUrl('studio_greenboard.jpg'),
+    getStudioCdnUrl('studio_camera_4k.jpg'),
+    getStudioCdnUrl('studio_controlroom.jpg'),
+    getStudioCdnUrl('studio_dressingroom.jpg')
 ];
 
 const ORGANIZATION_DATA = [
@@ -220,60 +228,81 @@ document.addEventListener('alpine:init', () => {
 
         studioInfrastructure: [
             {
+                id: 'chromakey_studio',
+                tag: '대형 크로마키 스튜디오',
+                tagColor: 'text-emerald-400 border-emerald-500/30 bg-emerald-500/15',
+                title: '6.6m 대형 곡면 크로마키 & 4K 촬영 스튜디오',
+                spec: '6.6m 곡면 크로마키 세트 + 천장 LED 판넬 조명',
+                desc: '6.6m 대형 곡면 무이음 크로마키 세트와 천장 그리드 LED 패널 시스템 조명, 4K 전문 카메라 및 프롬프터가 완비된 최첨단 가상 CG 합성 전문 스튜디오입니다.',
+                imageUrl: getStudioCdnUrl('chromakey_studio.jpg'),
+                fallbackUrl: '/studio_chromakey.svg',
+                thumbUrl: getStudioCdnUrl('chromakey_studio_thumb.jpg')
+            },
+            {
+                id: 'integrated_main_studio',
+                tag: '통합 스튜디오 전경',
+                tagColor: 'text-amber-300 border-amber-400/40 bg-amber-500/20',
+                title: '160평 규모 통합 대형 스튜디오 & 부조정실 전경',
+                spec: '160평 메인 세트 · 86" 전자칠판 · 6.6m 크로마키 · 천장 조명 그리드',
+                desc: '천장 고광량 LED 조명 그리드, 방송용 4K 멀티 카메라, 86인치 UHD 전자칠판, 6.6m 대형 크로마키 및 통유리로 연결된 첨단 부조정실을 갖춘 후미디어의 메인 스튜디오 인프라입니다.',
+                imageUrl: getStudioCdnUrl('main_studio.jpg'),
+                fallbackUrl: 'https://images.unsplash.com/photo-1598899134739-24c46f58b8c0?auto=format&fit=crop&w=1600&q=90',
+                thumbUrl: getStudioCdnUrl('main_studio_thumb.jpg')
+            },
+            {
                 id: 'smart_board_studio',
                 tag: '전자칠판 스튜디오',
                 tagColor: 'text-brand-mint border-brand-mint/30 bg-brand-mint/15',
-                title: '86인치 스마트 전자칠판 스튜디오',
-                imageUrl: 'https://images.unsplash.com/photo-1524178232363-1fb2b075b655?auto=format&fit=crop&w=1200&q=85',
-                thumbUrl: 'https://images.unsplash.com/photo-1524178232363-1fb2b075b655?auto=format&fit=crop&w=400&q=80'
+                title: '86인치 4K UHD 스마트 전자칠판 스튜디오',
+                spec: '86" 4K 멀티터치 · 실시간 판서 모듈',
+                desc: '선명한 4K 해상도의 86인치 대형 전자칠판과 강의 전용 무반사 특수 조명 세팅으로 몰입감 넘치는 이러닝 콘텐츠를 제작합니다.',
+                imageUrl: getStudioCdnUrl('smartboard_studio.jpg'),
+                fallbackUrl: 'https://images.unsplash.com/photo-1577896851231-70ef18881754?auto=format&fit=crop&w=1200&q=85',
+                thumbUrl: getStudioCdnUrl('smartboard_studio_thumb.jpg')
             },
             {
                 id: 'green_board_studio',
                 tag: '녹색 칠판 스튜디오',
                 tagColor: 'text-teal-300 border-teal-500/30 bg-teal-500/15',
                 title: '특수 무반사 조명 판서 칠판 스튜디오',
-                imageUrl: 'https://images.unsplash.com/photo-1509062522246-3755977927d7?auto=format&fit=crop&w=1200&q=85',
-                thumbUrl: 'https://images.unsplash.com/photo-1509062522246-3755977927d7?auto=format&fit=crop&w=400&q=80'
-            },
-            {
-                id: 'chromakey_studio',
-                tag: '크로마키 스튜디오',
-                tagColor: 'text-emerald-400 border-emerald-500/30 bg-emerald-500/15',
-                title: '6.6m 대형 곡면 크로마키 세트',
-                imageUrl: 'https://images.unsplash.com/photo-1574717024653-61fd2cf4d44d?auto=format&fit=crop&w=1200&q=85',
-                thumbUrl: 'https://images.unsplash.com/photo-1574717024653-61fd2cf4d44d?auto=format&fit=crop&w=400&q=80'
+                spec: '특수 무반사 조명 + 대형 판서 칠판',
+                desc: '눈부심 없는 특수 무반사 LED 조명 설계로 전통 강의 및 판서형 교육 콘텐츠를 왜곡 없이 고화질로 렌더링합니다.',
+                imageUrl: getStudioCdnUrl('greenboard_studio.jpg'),
+                fallbackUrl: 'https://images.unsplash.com/photo-1580582932707-520aed937b7b?auto=format&fit=crop&w=1200&q=85',
+                thumbUrl: getStudioCdnUrl('greenboard_studio_thumb.jpg')
             },
             {
                 id: 'camera_lighting',
                 tag: '카메라 & 조명',
                 tagColor: 'text-purple-400 border-purple-500/30 bg-purple-500/15',
-                title: '멀티 카메라 & 전문 조명 세팅',
-                imageUrl: 'https://images.unsplash.com/photo-1598899134739-24c46f58b8c0?auto=format&fit=crop&w=1200&q=85',
-                thumbUrl: 'https://images.unsplash.com/photo-1598899134739-24c46f58b8c0?auto=format&fit=crop&w=400&q=80'
-            },
-            {
-                id: 'lecture_practice_studio',
-                tag: '강의 및 실습 스튜디오',
-                tagColor: 'text-blue-400 border-blue-500/30 bg-blue-500/15',
-                title: '브랜딩 미디어 & 좌담회 촬영 세트',
-                imageUrl: 'https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=1200&q=85',
-                thumbUrl: 'https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=400&q=80'
+                title: '고성능 4K 멀티 카메라 & ceiling 조명 그리드',
+                spec: '방송용 4K 카메라 · 천장 LED 조명 그리드',
+                desc: '페디스탈 기반 4K 방송용 카메라와 천장 바텐 조명 시스템으로 왜곡 없는 화질과 고르게 빛나는 영상을 연출합니다.',
+                imageUrl: getStudioCdnUrl('camera_lighting.jpg'),
+                fallbackUrl: 'https://images.unsplash.com/photo-1524758631624-e2822e304c36?auto=format&fit=crop&w=1200&q=85',
+                thumbUrl: getStudioCdnUrl('camera_lighting_thumb.jpg')
             },
             {
                 id: 'control_room',
                 tag: '부조정실',
                 tagColor: 'text-cyan-400 border-cyan-500/30 bg-cyan-500/15',
-                title: '다채널 스위쳐 부조정실',
-                imageUrl: 'https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=1200&q=85',
-                thumbUrl: 'https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=400&q=80'
+                title: '전용 다채널 스위쳐 부조정실 시스템',
+                spec: '통유리 뷰어 · 4K 멀티 스위쳐 · 오디오 믹서',
+                desc: '스튜디오 전경이 한눈에 보이는 통유리 구조의 전용 부조정실에서 다채널 실시간 스위칭과 모니터링을 완벽히 진행합니다.',
+                imageUrl: getStudioCdnUrl('control_room.jpg'),
+                fallbackUrl: 'https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=1200&q=85',
+                thumbUrl: getStudioCdnUrl('control_room_thumb.jpg')
             },
             {
                 id: 'dressing_room',
                 tag: '분장 & 대기실',
                 tagColor: 'text-amber-300 border-amber-500/30 bg-amber-500/15',
                 title: '출연진 프라이빗 분장실 & 파우더룸',
-                imageUrl: 'https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?auto=format&fit=crop&w=1200&q=85',
-                thumbUrl: 'https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?auto=format&fit=crop&w=400&q=80'
+                spec: '프라이빗 라운지 + 스타일링 파우더룸',
+                desc: '강사진 및 출연진의 쾌적한 사전 대기, 메이크업, 의상 체크를 위한 프라이빗 스타일링 파우더룸과 대기 공간 조성을 지원합니다.',
+                imageUrl: getStudioCdnUrl('dressing_room.jpg'),
+                fallbackUrl: 'https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=1200&q=85',
+                thumbUrl: getStudioCdnUrl('dressing_room_thumb.jpg')
             }
         ],
 
