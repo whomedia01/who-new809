@@ -844,8 +844,8 @@
             .hero-video-bg { transform: scale(1.05); transform-origin: center center; object-fit: cover; }
         }
         @media (max-width: 768px) {
-            .hero-video-wrapper { position: relative; width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; }
-            .hero-video-bg { transform: none; object-fit: contain; width: 100%; height: 100%; }
+            .hero-video-wrapper { position: relative; width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; overflow: hidden; }
+            .hero-video-bg { transform: scale(1.25); transform-origin: center top; object-fit: cover; object-position: center top; width: 100%; height: 100%; }
         }
 
         html, body {
@@ -1031,10 +1031,7 @@
                        autoplay loop muted playsinline aria-hidden="true">
                     <source src="https://raw.githubusercontent.com/whomedia01/whomedia4/main/whomedia_hero.mp4" type="video/mp4" />
                 </video>
-                <div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/20 to-slate-950/40 pointer-events-none md:hidden"></div>
-                <!-- Enhanced Mobile Bottom Blur & Gradient Overlay to obscure Gemini logo -->
-                <div class="absolute bottom-0 inset-x-0 h-2/5 bg-gradient-to-t from-slate-950 via-slate-950/95 via-40% to-transparent backdrop-blur-2xl pointer-events-none md:hidden"></div>
-                <div class="absolute bottom-0 right-0 w-2/3 h-20 bg-slate-950/90 filter blur-xl pointer-events-none md:hidden"></div>
+                <div class="absolute inset-0 bg-gradient-to-t from-slate-950/60 via-transparent to-slate-950/30 pointer-events-none md:hidden"></div>
             </div>
 
             <div class="absolute inset-0 z-10 bg-gradient-to-b from-[#0A0E1A]/60 via-[#0D1424]/35 to-[#0A0E1A]/75 pointer-events-none hidden md:block"></div>
