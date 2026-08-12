@@ -431,6 +431,68 @@
                 keywords: ['지식을 성과로 만드는 맞춤형 교육 솔루션', '맞춤형 이러닝 콘텐츠 개발', '160평 전문 스튜디오 & 고품질 영상 연출', '실전 맞춤형 오프라인 아카데미 & 전문 특강', '지속가능한 성장을 이끄는 조직 체계'],
                 currentKeywordIndex: 0,
 
+                // [모바일 터치 세로/가로 슬라이드 스와이프 내비게이션 상태]
+                mobileCurrentSection: 0,
+                totalMobileSections: 7,
+                mobileSectionNames: ['홈', '회사소개', '조직체계', '사업영역', '스튜디오', '포트폴리오', '문의/안내'],
+
+                goToMobileSection(idx) {
+                    if (idx < 0) idx = 0;
+                    if (idx >= this.totalMobileSections) idx = this.totalMobileSections - 1;
+                    this.mobileCurrentSection = idx;
+                    if (window.innerWidth < 768) {
+                        const cards = document.querySelectorAll('.mobile-section-card');
+                        if (cards[idx]) cards[idx].scrollTop = 0;
+                    }
+                },
+                nextMobileSection() {
+                    if (this.mobileCurrentSection < this.totalMobileSections - 1) {
+                        this.goToMobileSection(this.mobileCurrentSection + 1);
+                    }
+                },
+                prevMobileSection() {
+                    if (this.mobileCurrentSection > 0) {
+                        this.goToMobileSection(this.mobileCurrentSection - 1);
+                    }
+                },
+
+                globalTouchStartX: 0,
+                globalTouchStartY: 0,
+
+                handleGlobalTouchStart(e) {
+                    if (window.innerWidth >= 768 || this.videoModalOpen || this.imageModalOpen) return;
+                    if (e.target.closest('input, textarea, select, button, iframe, .no-swipe')) return;
+                    if (e.touches && e.touches.length > 0) {
+                        this.globalTouchStartX = e.touches[0].clientX;
+                        this.globalTouchStartY = e.touches[0].clientY;
+                    }
+                },
+
+                handleGlobalTouchEnd(e) {
+                    if (window.innerWidth >= 768 || this.videoModalOpen || this.imageModalOpen) return;
+                    if (e.target.closest('input, textarea, select, button, iframe, .no-swipe')) return;
+                    if (e.changedTouches && e.changedTouches.length > 0) {
+                        const touchEndX = e.changedTouches[0].clientX;
+                        const touchEndY = e.changedTouches[0].clientY;
+                        
+                        const deltaX = touchEndX - this.globalTouchStartX;
+                        const deltaY = touchEndY - this.globalTouchStartY;
+                        const minSwipeDistance = 30;
+                        
+                        // 모바일 세로 화면 최적화: 어떤 방향(상/하/좌/우)으로 드래그하든 가로 방향 페이지 전환!
+                        if (Math.abs(deltaX) > minSwipeDistance || Math.abs(deltaY) > minSwipeDistance) {
+                            // 위로 또는 좌측으로 드래그 -> 다음 섹션
+                            if (deltaX < -minSwipeDistance || deltaY < -minSwipeDistance) {
+                                this.nextMobileSection();
+                            }
+                            // 아래로 또는 우측으로 드래그 -> 이전 섹션
+                            else if (deltaX > minSwipeDistance || deltaY > minSwipeDistance) {
+                                this.prevMobileSection();
+                            }
+                        }
+                    }
+                },
+
                 // [전체 포트폴리오 목록 - PORTFOLIO_DATA 상수로 100% 보장]
                 portfolioItems: PORTFOLIO_DATA,
                 studioImagesList: STUDIO_IMAGES,
@@ -852,6 +914,72 @@
             max-width: 100vw;
             overflow-x: hidden;
         }
+
+        /* Mobile Horizontal Page Slider Styles (< 768px) */
+        @media (max-width: 767px) {
+            body, html {
+                overflow: hidden !important;
+                position: fixed !important;
+                width: 100% !important;
+                height: 100% !important;
+            }
+            .mobile-slider-viewport {
+                position: fixed !important;
+                top: 56px !important;
+                left: 0 !important;
+                right: 0 !important;
+                bottom: 56px !important;
+                width: 100vw !important;
+                height: calc(100dvh - 112px) !important;
+                overflow: hidden !important;
+                background-color: #0A0E1A !important;
+                z-index: 20 !important;
+            }
+            .mobile-slider-track {
+                display: flex !important;
+                flex-direction: row !important;
+                width: 700vw !important;
+                height: 100% !important;
+                transition: transform 0.45s cubic-bezier(0.25, 1, 0.5, 1) !important;
+                will-change: transform;
+            }
+            .mobile-section-card {
+                width: 100vw !important;
+                height: 100% !important;
+                flex-shrink: 0 !important;
+                overflow-y: auto !important;
+                -webkit-overflow-scrolling: touch;
+                box-sizing: border-box;
+                padding-bottom: 24px;
+            }
+        }
+
+        @media (min-width: 768px) {
+            .mobile-slider-viewport {
+                position: relative !important;
+                top: auto !important;
+                left: auto !important;
+                right: auto !important;
+                bottom: auto !important;
+                width: 100% !important;
+                height: auto !important;
+                overflow: visible !important;
+                background-color: transparent !important;
+            }
+            .mobile-slider-track {
+                display: block !important;
+                width: 100% !important;
+                height: auto !important;
+                transform: none !important;
+            }
+            .mobile-section-card {
+                width: 100% !important;
+                height: auto !important;
+                overflow: visible !important;
+                padding-top: 0 !important;
+                padding-bottom: 0 !important;
+            }
+        }
     </style>
 </head>
 <body x-cloak
@@ -925,21 +1053,21 @@
              x-transition:leave-end="opacity-0 -translate-y-4"
              class="md:hidden bg-slate-950/95 backdrop-blur-xl border-b border-slate-800/80 px-5 py-5 space-y-3 shadow-2xl">
             <div class="grid grid-cols-2 gap-2 pb-2 border-b border-slate-800/80">
-                <a @click="mobileMenuOpen = false" href="#" class="bg-slate-900/80 border border-slate-800 rounded-xl p-3 text-slate-200 font-bold text-sm flex items-center gap-2 hover:border-brand-mint hover:text-brand-mint transition-colors">
+                <a @click="goToMobileSection(0); mobileMenuOpen = false" href="#" class="bg-slate-900/80 border border-slate-800 rounded-xl p-3 text-slate-200 font-bold text-sm flex items-center gap-2 hover:border-brand-mint hover:text-brand-mint transition-colors">
                     <span>🏠</span> <span>홈</span>
                 </a>
-                <a @click="mobileMenuOpen = false" href="#about" class="bg-slate-900/80 border border-slate-800 rounded-xl p-3 text-slate-200 font-bold text-sm flex items-center gap-2 hover:border-brand-mint hover:text-brand-mint transition-colors">
+                <a @click="goToMobileSection(1); mobileMenuOpen = false" href="#about" class="bg-slate-900/80 border border-slate-800 rounded-xl p-3 text-slate-200 font-bold text-sm flex items-center gap-2 hover:border-brand-mint hover:text-brand-mint transition-colors">
                     <span>ℹ️</span> <span>회사소개</span>
                 </a>
-                <a @click="mobileMenuOpen = false" href="#services" class="bg-slate-900/80 border border-slate-800 rounded-xl p-3 text-slate-200 font-bold text-sm flex items-center gap-2 hover:border-brand-mint hover:text-brand-mint transition-colors">
+                <a @click="goToMobileSection(3); mobileMenuOpen = false" href="#services" class="bg-slate-900/80 border border-slate-800 rounded-xl p-3 text-slate-200 font-bold text-sm flex items-center gap-2 hover:border-brand-mint hover:text-brand-mint transition-colors">
                     <span>💼</span> <span>사업영역</span>
                 </a>
-                <a @click="mobileMenuOpen = false" href="#studio" class="bg-slate-900/80 border border-slate-800 rounded-xl p-3 text-slate-200 font-bold text-sm flex items-center gap-2 hover:border-brand-mint hover:text-brand-mint transition-colors">
+                <a @click="goToMobileSection(4); mobileMenuOpen = false" href="#studio" class="bg-slate-900/80 border border-slate-800 rounded-xl p-3 text-slate-200 font-bold text-sm flex items-center gap-2 hover:border-brand-mint hover:text-brand-mint transition-colors">
                     <span>🎬</span> <span>스튜디오</span>
                 </a>
             </div>
             <div class="space-y-2 pt-1">
-                <a @click="mobileMenuOpen = false" href="#reference" class="block bg-slate-900/80 border border-slate-800 rounded-xl px-4 py-2.5 text-slate-200 font-bold text-sm hover:border-brand-mint hover:text-brand-mint transition-colors">
+                <a @click="goToMobileSection(5); mobileMenuOpen = false" href="#reference" class="block bg-slate-900/80 border border-slate-800 rounded-xl px-4 py-2.5 text-slate-200 font-bold text-sm hover:border-brand-mint hover:text-brand-mint transition-colors">
                     📁 포트폴리오
                 </a>
                 <a @click="mobileMenuOpen = false" 
@@ -961,17 +1089,23 @@
                     <span>이메일 문의 작성</span>
                 </a>
             </div>
-            <a @click="mobileMenuOpen = false" href="#contact" class="block bg-blue-600 hover:bg-blue-700 text-white font-extrabold text-center py-3 rounded-xl text-sm shadow-lg">
+            <a @click="goToMobileSection(6); mobileMenuOpen = false" href="#contact" class="block bg-blue-600 hover:bg-blue-700 text-white font-extrabold text-center py-3 rounded-xl text-sm shadow-lg">
                 <span>문의/상담 신청하기</span>
             </a>
         </div>
     </header>
 
-    <!-- MAIN CONTENT LANDMARK -->
-    <main id="main-content">
+    <!-- MAIN CONTENT LANDMARK (MOBILE SLIDER VIEWPORT) -->
+    <main id="main-content" 
+          class="mobile-slider-viewport relative w-full"
+          @touchstart="handleGlobalTouchStart($event)"
+          @touchend="handleGlobalTouchEnd($event)">
+
+        <div class="mobile-slider-track"
+             :style="window.innerWidth < 768 ? 'transform: translateX(-' + (mobileCurrentSection * 100) + 'vw)' : ''">
 
     <!-- HERO SECTION -->
-    <section id="hero" aria-label="메인 솔루션 및 이러닝 영상 제작" class="relative bg-brand-navy-dark text-white overflow-hidden flex flex-col justify-between min-h-[100dvh] md:h-auto md:min-h-screen md:min-h-[100dvh] md:justify-center pt-16 sm:pt-20 md:pt-24 pb-20 md:pb-36">
+    <section id="hero" aria-label="메인 솔루션 및 이러닝 영상 제작" class="mobile-section-card relative bg-brand-navy-dark text-white overflow-hidden flex flex-col justify-between min-h-[100dvh] md:h-auto md:min-h-screen md:min-h-[100dvh] md:justify-center pt-16 sm:pt-20 md:pt-24 pb-20 md:pb-36">
         
         <!-- Top Slogan Container -->
         <div class="w-full px-4 sm:px-6 lg:px-8 py-3 sm:py-8 md:py-0 relative z-30 max-w-[1200px] mx-auto my-0 md:my-auto shrink-0">
@@ -1073,7 +1207,7 @@
     </section>
 
     <!-- BRAND STORY & PHILOSOPHY: 회사소개 (About Us) -->
-    <section id="about" aria-label="브랜드 소개 및 회사 철학" class="py-10 sm:py-16 bg-slate-50 text-slate-900 relative overflow-hidden border-b border-slate-200" @mouseenter="stopAboutAutoPlay()" @mouseleave="startAboutAutoPlay()">
+    <section id="about" aria-label="브랜드 소개 및 회사 철학" class="mobile-section-card py-10 sm:py-16 bg-slate-50 text-slate-900 relative overflow-hidden border-b border-slate-200" @mouseenter="stopAboutAutoPlay()" @mouseleave="startAboutAutoPlay()">
         <div class="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(30,136,229,0.06),transparent_50%),radial-gradient(circle_at_bottom_left,rgba(0,210,132,0.05),transparent_50%)] pointer-events-none"></div>
 
         <div class="max-w-[1200px] mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
@@ -1182,7 +1316,7 @@
     </section>
 
     <!-- ORGANIZATION & ECOSYSTEM: (주)후미디어 조직 체계 -->
-    <section id="organization" class="py-8 sm:py-16 lg:py-24 bg-slate-900 text-white border-b border-slate-800 relative overflow-hidden">
+    <section id="organization" class="mobile-section-card py-8 sm:py-16 lg:py-24 bg-slate-900 text-white border-b border-slate-800 relative overflow-hidden">
         <div class="absolute inset-0 bg-[radial-gradient(circle_at_bottom_right,rgba(30,136,229,0.12),transparent_50%)] pointer-events-none"></div>
 
         <div class="max-w-[1200px] mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
@@ -1489,7 +1623,7 @@
     </section>
 
     <!-- BUSINESS NETWORK: (주)후미디어 핵심 사업 영역 -->
-    <section id="services" aria-label="주요 사업 영역 (이러닝 콘텐츠 개발 및 영상 제작)" class="py-8 sm:py-16 lg:py-20 bg-white text-slate-900 border-t border-b border-slate-200" @mouseenter="stopServiceAutoPlay()" @mouseleave="startServiceAutoPlay()">
+    <section id="services" aria-label="주요 사업 영역 (이러닝 콘텐츠 개발 및 영상 제작)" class="mobile-section-card py-8 sm:py-16 lg:py-20 bg-white text-slate-900 border-t border-b border-slate-200" @mouseenter="stopServiceAutoPlay()" @mouseleave="startServiceAutoPlay()">
         <div class="max-w-[1200px] mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center max-w-3xl mx-auto mb-6 sm:mb-10">
                 <span class="inline-block px-4 py-1.5 rounded-full bg-blue-50 text-blue-600 border border-blue-200/80 text-xs font-bold tracking-wider uppercase mb-2 sm:mb-3 shadow-xs">
@@ -1723,7 +1857,7 @@
     </section>
 
     <!-- STUDIO & INFRASTRUCTURE GALLERY -->
-    <section id="studio" aria-label="160평 최첨단 스튜디오 및 제작 인프라" class="py-10 sm:py-16 lg:py-24 bg-slate-900 text-white relative overflow-hidden">
+    <section id="studio" aria-label="160평 최첨단 스튜디오 및 제작 인프라" class="mobile-section-card py-10 sm:py-16 lg:py-24 bg-slate-900 text-white relative overflow-hidden">
         <div class="absolute inset-0 bg-[radial-gradient(circle_at_20%_20%,rgba(0,210,132,0.12),transparent_50%),radial-gradient(circle_at_80%_80%,rgba(59,130,246,0.12),transparent_50%)] pointer-events-none"></div>
 
         <div class="max-w-[1200px] mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
@@ -1846,7 +1980,7 @@
     </section>
 
     <!-- PORTFOLIO -->
-    <section id="reference" aria-label="포트폴리오 및 주요 제작 실적" class="py-8 sm:py-16 lg:py-24 bg-white">
+    <section id="reference" aria-label="포트폴리오 및 주요 제작 실적" class="mobile-section-card py-8 sm:py-16 lg:py-24 bg-white">
         <div class="max-w-[1200px] mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center max-w-2xl mx-auto mb-6 sm:mb-8">
                 <span class="inline-block px-3 py-1 rounded-md bg-brand-mint-light text-brand-mint-hover text-xs font-semibold mb-2 sm:mb-3">
@@ -1971,7 +2105,7 @@
     </section>
 
     <!-- CONTACT & FOOTER -->
-    <section id="contact" aria-label="제작 및 대관 상담 문의" class="py-10 sm:py-16 lg:py-20 bg-slate-50 text-slate-900 border-t border-slate-200">
+    <section id="contact" aria-label="제작 및 대관 상담 문의" class="mobile-section-card py-10 sm:py-16 lg:py-20 bg-slate-50 text-slate-900 border-t border-slate-200">
         <div class="max-w-[800px] mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-6 sm:mb-8">
                 <span class="inline-block px-3.5 py-1 rounded-full bg-blue-50 text-blue-600 text-xs font-bold mb-3 border border-blue-200">
@@ -2034,68 +2168,89 @@
                 </form>
             </div>
         </div>
-    </section>
 
-    </main>
+        <!-- FOOTER MOVED INSIDE SECTION 6 FOR MOBILE SLIDER -->
+        <footer role="contentinfo" class="bg-brand-navy-dark py-10 pb-20 md:pb-10 border-t border-gray-800 text-gray-400 text-xs mt-12">
+            <div class="max-w-[1200px] mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="mb-6 flex flex-col md:flex-row md:items-center justify-between gap-4">
+                    <div>
+                        <div class="mb-2">
+                            <a href="#" class="inline-flex items-center text-2xl sm:text-3xl font-black brand-logo-font logo-glow-dark-bg select-none tracking-tight">
+                                <span class="font-black" style="color: #FF0000; text-shadow: 0 0 10px rgba(255,0,0,0.4);">WHO</span>
+                                <span class="font-black ml-[1px]" style="color: #FFFFFF;">MEDIA</span>
+                            </a>
+                        </div>
+                        <p class="text-gray-400">㈜후미디어 | 전문 영상 제작, 교육 콘텐츠 개발 &amp; 스튜디오 대여 전문기업</p>
+                    </div>
 
-    <!-- FOOTER -->
-    <footer role="contentinfo" class="bg-brand-navy-dark py-10 pb-20 md:pb-10 border-t border-gray-800 text-gray-400 text-xs">
-        <div class="max-w-[1200px] mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="mb-6 flex flex-col md:flex-row md:items-center justify-between gap-4">
-                <div>
-                    <div class="mb-2">
-                        <a href="#" class="inline-flex items-center text-2xl sm:text-3xl font-black brand-logo-font logo-glow-dark-bg select-none tracking-tight">
-                            <span class="font-black" style="color: #FF0000; text-shadow: 0 0 10px rgba(255,0,0,0.4);">WHO</span>
-                            <span class="font-black ml-[1px]" style="color: #FFFFFF;">MEDIA</span>
+                    <!-- Footer Quick Contacts -->
+                    <div class="flex flex-wrap items-center gap-3 text-xs text-gray-300 bg-white/5 p-3 sm:p-4 rounded-xl border border-white/10">
+                        <a href="tel:02-6443-4222" class="hover:text-brand-mint transition-colors flex items-center gap-1.5 font-bold">
+                            <span class="text-brand-mint">📞</span> 대표전화 : 02-6443-4222
+                        </a>
+                        <span class="text-gray-600 hidden sm:inline">|</span>
+                        <a href="mailto:whomedia6104@gmail.com" class="hover:text-brand-mint transition-colors flex items-center gap-1.5 font-bold">
+                            <span class="text-brand-mint">✉️</span> 대표이메일 : whomedia6104@gmail.com
                         </a>
                     </div>
-                    <p class="text-gray-400">㈜후미디어 | 전문 영상 제작, 교육 콘텐츠 개발 &amp; 스튜디오 대여 전문기업</p>
                 </div>
 
-                <!-- Footer Quick Contacts (Relocated Here) -->
-                <div class="flex flex-wrap items-center gap-3 text-xs text-gray-300 bg-white/5 p-3 sm:p-4 rounded-xl border border-white/10">
-                    <a href="tel:02-6443-4222" class="hover:text-brand-mint transition-colors flex items-center gap-1.5 font-bold">
-                        <span class="text-brand-mint">📞</span> 대표전화 : 02-6443-4222
-                    </a>
-                    <span class="text-gray-600 hidden sm:inline">|</span>
-                    <a href="mailto:whomedia6104@gmail.com" class="hover:text-brand-mint transition-colors flex items-center gap-1.5 font-bold">
-                        <span class="text-brand-mint">✉️</span> 대표이메일 : whomedia6104@gmail.com
-                    </a>
-                </div>
+                <address class="not-italic space-y-1 text-gray-500 border-t border-gray-800/80 pt-5">
+                    <p>법인명 : (주)후미디어 ｜ 대표이사 : 황광성 ｜ 사업자등록번호 : 119-86-25861</p>
+                    <p>스튜디오 및 본사 : 서울특별시 금천구 가산디지털2로 53 (가산동) 한라시그마밸리 1102호 ~ 1104호</p>
+                    <div class="pt-3 flex items-center justify-between flex-wrap gap-2 text-gray-600">
+                        <p>© 2026 WHO MEDIA Corp. All rights reserved.</p>
+                    </div>
+                </address>
             </div>
+        </footer>
+    </section>
 
-            <address class="not-italic space-y-1 text-gray-500 border-t border-gray-800/80 pt-5">
-                <p>법인명 : (주)후미디어 ｜ 대표이사 : 황광성 ｜ 사업자등록번호 : 119-86-25861</p>
-                <p>스튜디오 및 본사 : 서울특별시 금천구 가산디지털2로 53 (가산동) 한라시그마밸리 1102호 ~ 1104호</p>
-                <div class="pt-3 flex items-center justify-between flex-wrap gap-2 text-gray-600">
-                    <p>© 2026 WHO MEDIA Corp. All rights reserved.</p>
-                </div>
-            </address>
-        </div>
-    </footer>
+        </div> <!-- /.mobile-slider-track -->
+    </main> <!-- /.mobile-slider-viewport -->
 
-    <!-- MOBILE QUICK FLOATING APP DOCK NAVIGATION -->
-    <div class="md:hidden fixed bottom-0 left-0 right-0 z-40 bg-slate-950/95 backdrop-blur-xl border-t border-slate-800/90 px-2 py-2 flex items-center justify-around shadow-2xl select-none">
-        <button @click="window.scrollTo({top: 0, behavior: 'smooth'})" class="flex flex-col items-center justify-center py-1 px-2 text-slate-300 hover:text-white transition-colors">
-            <svg class="w-5 h-5 text-brand-mint" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"/></svg>
-            <span class="text-[10px] font-bold mt-0.5">홈</span>
+    <!-- MOBILE SECTION SWIPE & DOCK CONTROLLER BAR -->
+    <div class="md:hidden fixed bottom-0 left-0 right-0 z-40 bg-slate-950/95 backdrop-blur-xl border-t border-slate-800/90 px-3 py-2 flex items-center justify-between shadow-2xl select-none h-[56px]">
+        <!-- Prev Section Arrow -->
+        <button @click="prevMobileSection()" 
+                :disabled="mobileCurrentSection === 0"
+                :class="mobileCurrentSection === 0 ? 'opacity-30 text-slate-600' : 'active:scale-95 text-brand-mint'"
+                class="p-2 rounded-xl bg-slate-900 border border-slate-800 shrink-0 cursor-pointer flex items-center justify-center"
+                aria-label="이전 섹션">
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M15 19l-7-7 7-7"/></svg>
         </button>
-        <a href="#services" class="flex flex-col items-center justify-center py-1 px-2 text-slate-300 hover:text-white transition-colors">
-            <svg class="w-5 h-5 text-cyan-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
-            <span class="text-[10px] font-bold mt-0.5">사업영역</span>
-        </a>
-        <a href="#studio" class="flex flex-col items-center justify-center py-1 px-2 text-slate-300 hover:text-white transition-colors">
-            <svg class="w-5 h-5 text-amber-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z"/></svg>
-            <span class="text-[10px] font-bold mt-0.5">스튜디오</span>
-        </a>
-        <a href="#reference" class="flex flex-col items-center justify-center py-1 px-2 text-slate-300 hover:text-white transition-colors">
-            <svg class="w-5 h-5 text-purple-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"/></svg>
-            <span class="text-[10px] font-bold mt-0.5">포트폴리오</span>
-        </a>
-        <a href="tel:02-6443-4222" class="flex flex-col items-center justify-center py-1 px-2.5 bg-brand-mint text-slate-950 rounded-xl font-extrabold shadow-md active:scale-95 transition-transform">
-            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/></svg>
-            <span class="text-[10px] font-black mt-0.5">전화연결</span>
-        </a>
+
+        <!-- Center Indicator & Section Name -->
+        <div class="flex items-center gap-2 bg-slate-900 px-3 py-1.5 rounded-full border border-slate-800 shadow-inner">
+            <span class="text-brand-mint font-extrabold text-xs font-mono" x-text="(mobileCurrentSection + 1) + '/7'"></span>
+            <span class="text-slate-600 text-xs">|</span>
+            <span class="text-white font-black text-xs truncate max-w-[110px]" x-text="mobileSectionNames[mobileCurrentSection]"></span>
+            
+            <!-- Dots -->
+            <div class="flex items-center gap-1 ml-1">
+                <template x-for="(sName, idx) in mobileSectionNames" :key="idx">
+                    <button @click="goToMobileSection(idx)" 
+                            :class="mobileCurrentSection === idx ? 'w-3.5 bg-brand-mint' : 'w-1.5 bg-slate-700'" 
+                            class="h-1.5 rounded-full transition-all cursor-pointer"
+                            :aria-label="(idx + 1) + '번 섹션으로 이동'"></button>
+                </template>
+            </div>
+        </div>
+
+        <!-- Right Quick Call & Next Arrow -->
+        <div class="flex items-center gap-1.5">
+            <a href="tel:02-6443-4222" aria-label="전화 연결" class="p-2 rounded-xl bg-slate-900 border border-slate-800 text-cyan-400 shrink-0 flex items-center justify-center">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/></svg>
+            </a>
+
+            <button @click="nextMobileSection()" 
+                    :disabled="mobileCurrentSection === totalMobileSections - 1"
+                    :class="mobileCurrentSection === totalMobileSections - 1 ? 'opacity-30 text-slate-600' : 'active:scale-95 text-brand-mint'"
+                    class="p-2 rounded-xl bg-slate-900 border border-slate-800 shrink-0 cursor-pointer flex items-center justify-center"
+                    aria-label="다음 섹션">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M9 5l7 7-7 7"/></svg>
+            </button>
+        </div>
     </div>
 
     <!-- PORTFOLIO YOUTUBE VIDEO MODAL -->
