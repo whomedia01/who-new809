@@ -4,10 +4,11 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "dev": "vite",
+    "dev": "node server.ts",
     "build": "vite build",
     "start": "node server.ts",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "lint": "vite build"
   },
   "devDependencies": {
     "@tailwindcss/vite": "^4.3.3",
