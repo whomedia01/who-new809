@@ -334,6 +334,52 @@
             transform: rotateX(-360deg);
             transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
         }
+
+        /* Interactive 3D Tilt Card Base & Glare Overlay */
+        .tilt-card {
+            transform-style: preserve-3d;
+            perspective: 1000px;
+            will-change: transform;
+            transition: transform 0.15s ease-out, border-color 0.3s ease, box-shadow 0.3s ease;
+            position: relative;
+        }
+        .tilt-card .card-glare {
+            position: absolute;
+            inset: 0;
+            border-radius: inherit;
+            pointer-events: none;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            z-index: 20;
+            mix-blend-mode: soft-light;
+        }
+        .tilt-card:hover .card-glare {
+            opacity: 1;
+        }
+
+        /* Glassmorphism Utility Classes */
+        .glass-panel-dark {
+            background: rgba(13, 20, 36, 0.75);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.12);
+        }
+        .glass-panel-light {
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid rgba(226, 232, 240, 0.8);
+        }
+
+        /* Interactive Stage Spotlight Overlay */
+        #interactive-spotlight {
+            position: fixed;
+            inset: 0;
+            pointer-events: none;
+            z-index: 25;
+            transition: opacity 0.5s ease;
+            will-change: background;
+        }
     </style>
     
     <!-- Tailwind CSS CDN -->
@@ -968,10 +1014,14 @@
     </header>
 
     <!-- MAIN CONTENT LANDMARK -->
-    <main id="main-content">
+    <main id="main-content" class="relative">
+        <!-- Interactive Stage Spotlight Overlay (Follows Mouse Cursor) -->
+        <div id="interactive-spotlight" class="hidden md:block"></div>
 
     <!-- HERO SECTION -->
     <section id="hero" aria-label="메인 솔루션 및 이러닝 영상 제작" class="relative bg-brand-navy-dark text-white overflow-hidden flex flex-col justify-between min-h-[100dvh] md:h-auto md:min-h-screen md:min-h-[100dvh] md:justify-center pt-16 sm:pt-20 md:pt-24 pb-20 md:pb-36">
+        <!-- Ambient Particles Canvas -->
+        <canvas id="hero-particles-canvas" class="absolute inset-0 w-full h-full pointer-events-none z-10 opacity-60"></canvas>
         
         <!-- Top Slogan Container -->
         <div class="w-full px-4 sm:px-6 lg:px-8 py-3 sm:py-8 md:py-0 relative z-30 max-w-[1200px] mx-auto my-0 md:my-auto shrink-0">
@@ -1045,25 +1095,25 @@
                 <div class="grid grid-cols-2 sm:grid-cols-4 gap-2.5 sm:gap-4 text-center">
                     <div class="flex flex-col items-center justify-center p-2.5 sm:p-3 bg-slate-900/90 sm:bg-transparent border border-slate-800 sm:border-none rounded-xl sm:rounded-none shadow-sm">
                         <div class="text-xl sm:text-3xl lg:text-4xl font-extrabold text-white tracking-tight leading-none mb-1">
-                            17<span class="text-brand-mint font-extrabold ml-0.5 text-xs sm:text-base">년</span>
+                            <span class="stat-counter font-black" data-counter-target="17">17</span><span class="text-brand-mint font-extrabold ml-0.5 text-xs sm:text-base">년</span>
                         </div>
                         <div class="text-xs sm:text-sm font-medium text-slate-300">축적의 노하우</div>
                     </div>
                     <div class="flex flex-col items-center justify-center p-2.5 sm:p-3 bg-slate-900/90 sm:bg-transparent border border-slate-800 sm:border-none rounded-xl sm:rounded-none shadow-sm">
                         <div class="text-xl sm:text-3xl lg:text-4xl font-extrabold text-white tracking-tight leading-none mb-1">
-                            100<span class="text-brand-mint font-extrabold ml-0.5 text-xs sm:text-base">+</span>
+                            <span class="stat-counter font-black" data-counter-target="100">100</span><span class="text-brand-mint font-extrabold ml-0.5 text-xs sm:text-base">+</span>
                         </div>
                         <div class="text-xs sm:text-sm font-medium text-slate-300">주요 협력기관</div>
                     </div>
                     <div class="flex flex-col items-center justify-center p-2.5 sm:p-3 bg-slate-900/90 sm:bg-transparent border border-slate-800 sm:border-none rounded-xl sm:rounded-none shadow-sm">
                         <div class="text-xl sm:text-3xl lg:text-4xl font-extrabold text-white tracking-tight leading-none mb-1">
-                            1,500<span class="text-brand-mint font-extrabold ml-0.5 text-xs sm:text-base">+</span>
+                            <span class="stat-counter font-black" data-counter-target="1500" data-counter-comma="true">1,500</span><span class="text-brand-mint font-extrabold ml-0.5 text-xs sm:text-base">+</span>
                         </div>
                         <div class="text-xs sm:text-sm font-medium text-slate-300">누적 프로젝트</div>
                     </div>
                     <div class="flex flex-col items-center justify-center p-2.5 sm:p-3 bg-slate-900/90 sm:bg-transparent border border-slate-800 sm:border-none rounded-xl sm:rounded-none shadow-sm">
                         <div class="text-xl sm:text-3xl lg:text-4xl font-extrabold text-white tracking-tight leading-none mb-1">
-                            10,000<span class="text-brand-mint font-extrabold ml-0.5 text-xs sm:text-base">+</span>
+                            <span class="stat-counter font-black" data-counter-target="10000" data-counter-comma="true">10,000</span><span class="text-brand-mint font-extrabold ml-0.5 text-xs sm:text-base">+</span>
                         </div>
                         <div class="text-xs sm:text-sm font-medium text-slate-300">연간 제작 콘텐츠</div>
                     </div>
@@ -1724,6 +1774,8 @@
 
     <!-- STUDIO & INFRASTRUCTURE GALLERY -->
     <section id="studio" aria-label="160평 최첨단 스튜디오 및 제작 인프라" class="py-10 sm:py-16 lg:py-24 bg-slate-900 text-white relative overflow-hidden">
+        <!-- Ambient Particles Canvas -->
+        <canvas id="studio-particles-canvas" class="absolute inset-0 w-full h-full pointer-events-none z-10 opacity-50"></canvas>
         <div class="absolute inset-0 bg-[radial-gradient(circle_at_20%_20%,rgba(0,210,132,0.12),transparent_50%),radial-gradient(circle_at_80%_80%,rgba(59,130,246,0.12),transparent_50%)] pointer-events-none"></div>
 
         <div class="max-w-[1200px] mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
@@ -1739,50 +1791,46 @@
                 </p>
             </div>
 
-            <!-- Specs Banner -->
+            <!-- Specs Banner with Animated Stat Counters and 3D Tilt Cards -->
             <div class="grid grid-cols-2 lg:grid-cols-4 gap-3.5 sm:gap-6 mb-8 sm:mb-12">
-                <div class="bg-slate-900/90 backdrop-blur-md rounded-2xl p-4 sm:p-6 border border-slate-800 shadow-xl flex flex-col items-center text-center hover:border-brand-mint/40 hover:shadow-brand-mint/10 hover:-translate-y-0.5 transition-all duration-300">
+                <div class="tilt-card bg-slate-900/90 backdrop-blur-md rounded-2xl p-4 sm:p-6 border border-slate-800 shadow-xl flex flex-col items-center text-center hover:border-brand-mint/40 hover:shadow-brand-mint/10 transition-all duration-300">
                     <span class="inline-flex items-center justify-center px-3 py-1 sm:px-4 sm:py-1.5 rounded-full bg-brand-mint/15 text-brand-mint font-black text-sm sm:text-base mb-2.5 sm:mb-3.5 border border-brand-mint/30 shadow-xs">
-                        160평
+                        <span class="stat-counter font-black" data-counter-target="160" data-counter-suffix="평">0평</span>
                     </span>
                     <h3 class="text-base sm:text-lg lg:text-xl font-bold text-white mb-1 tracking-tight">대형 스튜디오</h3>
                     <p class="text-xs sm:text-sm text-slate-300 font-medium leading-relaxed">6개 전용 스튜디오 &amp; 부대시설</p>
                 </div>
 
-                <div class="bg-slate-900/90 backdrop-blur-md rounded-2xl p-4 sm:p-6 border border-slate-800 shadow-xl flex flex-col items-center text-center hover:border-blue-500/40 hover:shadow-blue-500/10 hover:-translate-y-0.5 transition-all duration-300">
+                <div class="tilt-card bg-slate-900/90 backdrop-blur-md rounded-2xl p-4 sm:p-6 border border-slate-800 shadow-xl flex flex-col items-center text-center hover:border-blue-500/40 hover:shadow-blue-500/10 transition-all duration-300">
                     <span class="inline-flex items-center justify-center px-3 py-1 sm:px-4 sm:py-1.5 rounded-full bg-blue-500/15 text-blue-400 font-black text-sm sm:text-base mb-2.5 sm:mb-3.5 border border-blue-500/30 shadow-xs">
-                        86인치
+                        <span class="stat-counter font-black" data-counter-target="86" data-counter-suffix="인치">0인치</span>
                     </span>
                     <h3 class="text-base sm:text-lg lg:text-xl font-bold text-white mb-1 tracking-tight">전자칠판</h3>
                     <p class="text-xs sm:text-sm text-slate-300 font-medium leading-relaxed">실시간 판서 시스템</p>
                 </div>
 
-                <div class="bg-slate-900/90 backdrop-blur-md rounded-2xl p-4 sm:p-6 border border-slate-800 shadow-xl flex flex-col items-center text-center hover:border-teal-500/40 hover:shadow-teal-500/10 hover:-translate-y-0.5 transition-all duration-300">
+                <div class="tilt-card bg-slate-900/90 backdrop-blur-md rounded-2xl p-4 sm:p-6 border border-slate-800 shadow-xl flex flex-col items-center text-center hover:border-teal-500/40 hover:shadow-teal-500/10 transition-all duration-300">
                     <span class="inline-flex items-center justify-center px-3 py-1 sm:px-4 sm:py-1.5 rounded-full bg-teal-500/15 text-teal-300 font-black text-sm sm:text-base mb-2.5 sm:mb-3.5 border border-teal-500/30 shadow-xs">
-                        6.6m
+                        <span class="stat-counter font-black" data-counter-target="6.6" data-counter-decimals="1" data-counter-suffix="m">0.0m</span>
                     </span>
                     <h3 class="text-base sm:text-lg lg:text-xl font-bold text-white mb-1 tracking-tight">대형 크로마키</h3>
                     <p class="text-xs sm:text-sm text-slate-300 font-medium leading-relaxed">실시간 CG 가상합성 세트</p>
                 </div>
 
-                <div class="bg-slate-900/90 backdrop-blur-md rounded-2xl p-4 sm:p-6 border border-slate-800 shadow-xl flex flex-col items-center text-center hover:border-purple-500/40 hover:shadow-purple-500/10 hover:-translate-y-0.5 transition-all duration-300">
+                <div class="tilt-card bg-slate-900/90 backdrop-blur-md rounded-2xl p-4 sm:p-6 border border-slate-800 shadow-xl flex flex-col items-center text-center hover:border-purple-500/40 hover:shadow-purple-500/10 transition-all duration-300">
                     <span class="inline-flex items-center justify-center px-3 py-1 sm:px-4 sm:py-1.5 rounded-full bg-purple-500/15 text-purple-300 font-black text-sm sm:text-base mb-2.5 sm:mb-3.5 border border-purple-500/30 shadow-xs">
-                        SYSTEM
+                        <span class="stat-counter font-black" data-counter-target="100" data-counter-suffix="% SYSTEM">0%</span>
                     </span>
                     <h3 class="text-base sm:text-lg lg:text-xl font-bold text-white mb-1 tracking-tight">전용 부조정실</h3>
                     <p class="text-xs sm:text-sm text-slate-300 font-medium leading-relaxed">다채널 스위쳐 &amp; 모니터링</p>
                 </div>
             </div>
 
-
-
             <!-- Studio Facility Grid Gallery (CSS Grid Layout) -->
             <div class="mb-12">
-
-
                 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
                     <template x-for="(item, idx) in studioInfrastructure" :key="item.id">
-                        <div class="bg-slate-900/90 rounded-2xl overflow-hidden border border-slate-800 hover:border-brand-mint/60 shadow-xl hover:shadow-2xl hover:shadow-brand-mint/15 transition-all duration-300 hover:-translate-y-1.5 flex flex-col group cursor-pointer"
+                        <div class="tilt-card bg-slate-900/90 rounded-2xl overflow-hidden border border-slate-800 hover:border-brand-mint/60 shadow-xl hover:shadow-2xl hover:shadow-brand-mint/15 transition-all duration-300 flex flex-col group cursor-pointer"
                              @click="openImageModal(item.imageUrl, item.title)">
                             
                             <!-- Image Container with aspect-ratio and object-fit cover -->
@@ -1839,7 +1887,7 @@
     </section>
 
     <!-- PORTFOLIO -->
-    <section id="reference" aria-label="포트폴리오 및 주요 제작 실적" class="py-8 sm:py-16 lg:py-24 bg-white">
+    <section id="reference" aria-label="포트폴리오 및 주요 제작 실적" class="py-8 sm:py-16 lg:py-24 bg-white relative overflow-hidden">
         <div class="max-w-[1200px] mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center max-w-2xl mx-auto mb-6 sm:mb-8">
                 <span class="inline-block px-3 py-1 rounded-md bg-brand-mint-light text-brand-mint-hover text-xs font-semibold mb-2 sm:mb-3">
@@ -1861,7 +1909,7 @@
             <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 sm:gap-6">
                 <template x-for="(item, idx) in filteredPortfolio.slice(0, portfolioLimit)" :key="item.id">
                     <article @click="openModal(item.id, item.title)"
-                          class="w-full group relative bg-brand-gray rounded-2xl overflow-hidden border border-brand-border cursor-pointer shadow-xs hover:shadow-xl transition-all duration-300 flex flex-col justify-between">
+                          class="tilt-card w-full group relative bg-brand-gray rounded-2xl overflow-hidden border border-brand-border cursor-pointer shadow-xs hover:shadow-xl transition-all duration-300 flex flex-col justify-between">
                         <div class="aspect-video relative overflow-hidden bg-slate-900">
                             <img :src="'https://img.youtube.com/vi/' + item.id + '/hqdefault.jpg'" 
                                  @error="$el.src='https://images.unsplash.com/photo-1574717024653-61fd2cf4d44d?auto=format&fit=crop&w=600&q=80'"
@@ -2187,5 +2235,208 @@
             </button>
         </div>
     </div>
+
+    <!-- ADVANCED MOTION & LIGHTING EFFECTS CONTROLLER -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // ==========================================
+            // 1. INTERACTIVE MOUSE SPOTLIGHT (조명 트래킹)
+            // ==========================================
+            const spotlightEl = document.getElementById('interactive-spotlight');
+            if (spotlightEl && window.innerWidth >= 768) {
+                let targetX = window.innerWidth / 2;
+                let targetY = window.innerHeight / 2;
+                let currentX = targetX;
+                let currentY = targetY;
+
+                window.addEventListener('mousemove', (e) => {
+                    targetX = e.clientX;
+                    targetY = e.clientY;
+                });
+
+                function updateSpotlight() {
+                    currentX += (targetX - currentX) * 0.12;
+                    currentY += (targetY - currentY) * 0.12;
+                    
+                    spotlightEl.style.background = `radial-gradient(650px circle at ${currentX.toFixed(1)}px ${currentY.toFixed(1)}px, rgba(0, 210, 132, 0.12), rgba(30, 136, 229, 0.08), transparent 75%)`;
+                    requestAnimationFrame(updateSpotlight);
+                }
+                requestAnimationFrame(updateSpotlight);
+            }
+
+            // ==========================================
+            // 2. INTERACTIVE 3D TILT EFFECT & GLARE
+            // ==========================================
+            function bind3DTiltCard(card) {
+                if (card.dataset.tiltBound) return;
+                card.dataset.tiltBound = 'true';
+
+                let glare = card.querySelector('.card-glare');
+                if (!glare) {
+                    glare = document.createElement('div');
+                    glare.className = 'card-glare';
+                    card.appendChild(glare);
+                }
+
+                card.addEventListener('mousemove', (e) => {
+                    const rect = card.getBoundingClientRect();
+                    const x = (e.clientX - rect.left) / rect.width;
+                    const y = (e.clientY - rect.top) / rect.height;
+                    
+                    const rotateX = ((0.5 - y) * 12).toFixed(2);
+                    const rotateY = ((x - 0.5) * 12).toFixed(2);
+
+                    card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale3d(1.02, 1.02, 1.02)`;
+                    glare.style.background = `radial-gradient(circle at ${(x * 100).toFixed(1)}% ${(y * 100).toFixed(1)}%, rgba(255,255,255,0.22), transparent 60%)`;
+                });
+
+                card.addEventListener('mouseleave', () => {
+                    card.style.transform = 'perspective(1000px) rotateX(0deg) rotateY(0deg) scale3d(1, 1, 1)';
+                });
+            }
+
+            function setupAllTiltCards() {
+                document.querySelectorAll('.tilt-card').forEach(bind3DTiltCard);
+            }
+            setupAllTiltCards();
+
+            const observer = new MutationObserver(() => {
+                setupAllTiltCards();
+            });
+            observer.observe(document.body, { childList: true, subtree: true });
+
+            // ==========================================
+            // 3. ANIMATED STAT COUNTERS (실시간 카운팅)
+            // ==========================================
+            function animateCounter(el) {
+                if (el.dataset.animated === 'true') return;
+                el.dataset.animated = 'true';
+
+                const target = parseFloat(el.getAttribute('data-counter-target') || '0');
+                const suffix = el.getAttribute('data-counter-suffix') || '';
+                const prefix = el.getAttribute('data-counter-prefix') || '';
+                const decimals = parseInt(el.getAttribute('data-counter-decimals') || '0', 10);
+                const useComma = el.getAttribute('data-counter-comma') === 'true' || target >= 1000;
+                const duration = 1800;
+                const startTime = performance.now();
+
+                function formatNumber(num) {
+                    if (decimals > 0) {
+                        const parts = num.toFixed(decimals).split('.');
+                        if (useComma) parts[0] = parseInt(parts[0], 10).toLocaleString('en-US');
+                        return parts.join('.');
+                    }
+                    const intVal = Math.floor(num);
+                    return useComma ? intVal.toLocaleString('en-US') : intVal.toString();
+                }
+
+                function step(now) {
+                    const elapsed = now - startTime;
+                    const progress = Math.min(elapsed / duration, 1);
+                    const easeProgress = progress === 1 ? 1 : 1 - Math.pow(2, -10 * progress);
+                    const currentValue = target * easeProgress;
+
+                    el.textContent = `${prefix}${formatNumber(currentValue)}${suffix}`;
+
+                    if (progress < 1) {
+                        requestAnimationFrame(step);
+                    } else {
+                        el.textContent = `${prefix}${formatNumber(target)}${suffix}`;
+                    }
+                }
+                requestAnimationFrame(step);
+            }
+
+            const counterObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        animateCounter(entry.target);
+                    }
+                });
+            }, { threshold: 0.2 });
+
+            document.querySelectorAll('.stat-counter').forEach(el => counterObserver.observe(el));
+
+            // ==========================================
+            // 4. AMBIENT PARTICLES CANVAS
+            // ==========================================
+            function initParticleCanvas(canvasId, particleCount = 35) {
+                const canvas = document.getElementById(canvasId);
+                if (!canvas) return;
+                const ctx = canvas.getContext('2d');
+                if (!ctx) return;
+
+                let width = canvas.width = canvas.parentElement ? canvas.parentElement.clientWidth : window.innerWidth;
+                let height = canvas.height = canvas.parentElement ? canvas.parentElement.clientHeight : window.innerHeight;
+
+                const particles = [];
+                const colors = ['rgba(0, 210, 132, ', 'rgba(30, 136, 229, ', 'rgba(255, 255, 255, '];
+
+                for (let i = 0; i < particleCount; i++) {
+                    particles.push({
+                        x: Math.random() * width,
+                        y: Math.random() * height,
+                        radius: Math.random() * 2 + 1,
+                        colorBase: colors[Math.floor(Math.random() * colors.length)],
+                        alpha: Math.random() * 0.5 + 0.2,
+                        vx: (Math.random() - 0.5) * 0.4,
+                        vy: (Math.random() - 0.5) * 0.4,
+                        pulseSpeed: Math.random() * 0.02 + 0.005
+                    });
+                }
+
+                function resize() {
+                    if (!canvas.parentElement) return;
+                    width = canvas.width = canvas.parentElement.clientWidth;
+                    height = canvas.height = canvas.parentElement.clientHeight;
+                }
+                window.addEventListener('resize', resize);
+
+                function render() {
+                    ctx.clearRect(0, 0, width, height);
+
+                    for (let i = 0; i < particles.length; i++) {
+                        const p = particles[i];
+                        p.x += p.vx;
+                        p.y += p.vy;
+
+                        if (p.x < 0) p.x = width;
+                        if (p.x > width) p.x = 0;
+                        if (p.y < 0) p.y = height;
+                        if (p.y > height) p.y = 0;
+
+                        p.alpha += Math.sin(Date.now() * p.pulseSpeed) * 0.005;
+                        const currentAlpha = Math.max(0.1, Math.min(0.7, p.alpha));
+
+                        ctx.beginPath();
+                        ctx.arc(p.x, p.y, p.radius, 0, Math.PI * 2);
+                        ctx.fillStyle = p.colorBase + currentAlpha + ')';
+                        ctx.fill();
+
+                        for (let j = i + 1; j < particles.length; j++) {
+                            const p2 = particles[j];
+                            const dx = p.x - p2.x;
+                            const dy = p.y - p2.y;
+                            const dist = Math.sqrt(dx * dx + dy * dy);
+
+                            if (dist < 90) {
+                                ctx.beginPath();
+                                ctx.moveTo(p.x, p.y);
+                                ctx.lineTo(p2.x, p2.y);
+                                ctx.strokeStyle = `rgba(0, 210, 132, ${0.15 * (1 - dist / 90)})`;
+                                ctx.lineWidth = 0.5;
+                                ctx.stroke();
+                            }
+                        }
+                    }
+                    requestAnimationFrame(render);
+                }
+                requestAnimationFrame(render);
+            }
+
+            initParticleCanvas('hero-particles-canvas', 40);
+            initParticleCanvas('studio-particles-canvas', 30);
+        });
+    </script>
 </body>
 </html>
